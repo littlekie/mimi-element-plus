@@ -16,6 +16,7 @@ Since TypeScript cannot handle type information for `.vue` imports, they are shi
 You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
 # mimi-element-plus
 ## githooks 钩子没有被触发的原因
+在 .git config 文件中 hooksPath = .husky 这一行删除即可
 ```bash
 [core]
 	repositoryformatversion = 0
@@ -27,3 +28,7 @@ You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/
 	hooksPath = .husky #这一行删除
 ```
 有可能之前安装了 .husky 后面又没用了把 hooksPath = .husky 这一行删除
+
+### pnpm install 执行完后 ，似乎不会触发 
+yorkie   "install": "node bin/install.js",
+导致不会触发 commit-msg 钩子
