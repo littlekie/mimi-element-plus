@@ -29,6 +29,10 @@ You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/
 ```
 有可能之前安装了 .husky 后面又没用了把 hooksPath = .husky 这一行删除
 
+要使用 pnpm unnistall husky
+
 ### pnpm install 执行完后 ，似乎不会触发 
 yorkie   "install": "node bin/install.js",
 导致不会触发 commit-msg 钩子
+
+### 可尝试把 yorkie 替代为 yorkie-pnpm
