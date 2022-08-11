@@ -1,0 +1,12 @@
+{
+  "name": "@mini-element-plus/components",
+  "version": "0.0.1",
+  "description": "all mini-element-plus components ",
+  "main": "index.ts",
+  "peerDependencies": {
+    "vue": "^3.2.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
