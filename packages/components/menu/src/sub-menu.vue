@@ -1,5 +1,5 @@
 <template>
-  <div :id="'sidebar_' + id" class="wh-sidebar">
+  <div :id="'sidebar_' + id" class="wh-sidebar" role="subMenu">
     <div class="wh-sc-header">
       <template v-if="Boolean(headerTitle) && id === 0">
         <div class="wh-sc-header-title">

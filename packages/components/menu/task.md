@@ -41,4 +41,7 @@
       支持双向绑定,
 
 ### 8.11
-[x] 增加修改 mune-item-progress 值后onchange 事件
+- [x] 增加修改 mune-item-progress 值后onchange 事件
+- [x] 修复点击click 遇到disbaled问题，上下移动遇到 menu-item disbaled的时候要跳过它
+- [x] menu-item 支持click事件 和 enter事件 返回当前节点的数据，key\value等
+      且点击和 enter不为disabled的节点，要触发click事件，menu-item需要有selected icon

@@ -7,6 +7,7 @@
       highlight: isFocus,
       in_active_path: isActive
     }"
+    role="menuItem"
   >
     <div
       v-if="prefixIcon"
@@ -46,7 +47,6 @@ const props = defineProps<{
   isFocus?: boolean
   isActive?: boolean
 }>()
-
 const prefixIcon = computed(() =>
   props.node.iconType > -1 ? ICON_TYPE_CLASSNAME[props.node.iconType] : null
 )

@@ -1,5 +1,5 @@
 <template>
-  <div class="wh-option-progress">
+  <div class="wh-option-progress menu-item-progress" role="menuItemBar">
     <div class="wh-ap-currentValue">
       <div class="wh-apc-line">
         <div :style="{ width: progressWidth }" class="wh-apc-progress"></div>
