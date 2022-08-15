@@ -33,6 +33,7 @@ const menuData = {
   type: -1,
   enable: 1
 }
+
 describe('Name of the Menu', () => {
   const cssName = ref('')
   function enterMenuItem(menuItem: MenuItemNode) {
@@ -60,9 +61,9 @@ describe('Name of the Menu', () => {
     expect(menuRef.currentItemIndex).toBe(0)
     menuRef.KEYDOWN('ENTER')
     expect(cssName.value).toBe(subTitleData[0].mlang_key)
-
   })
-  test('test openNextMneu', async () => {
+
+  test('test enter openNextMneu', async () => {
     const openNextMneuData =[ {
       data: subTitleData,
       iconType: -1,
@@ -125,4 +126,77 @@ describe('Name of the Menu', () => {
     expect(menuRef.currentItemIndex).toBe(1)
     menuRef.KEYDOWN('BACK')
   })
+
+  test('test clickopenNextMneu', async () => {
+    const openNextMneuData = [
+      {
+      data: subTitleData,
+      iconType: -1,
+      index: 0,
+      mlang_key: 'OPTION_SBTL',
+      selected: -1,
+      type: -1,
+      enable: 1
+    }, {
+      data: [  {
+        data: [], //子集数据
+        iconType: 0, //String型，图标类型，为-1时指不带图标
+        index: 0, //item的下标
+        mlang_key: 'OPTION_SUBTITLES_OFF1', //多语言字段
+        selected: 1, //当前是否为选中状态
+        type: 0, //是否包含子集,默认为-1
+        disabled: 0 //非必传项，默认为0
+      },
+      {
+        data: [], //子集数据
+        iconType: 0, //String型，图标类型，为-1时指不带图标
+        index: 1, //item的下标
+        mlang_key: 'OPTION_SUBTITLES_ON1', //多语言字段
+        selected: 0, //当前是否为选中状态
+        type: 0, //是否包含子集,默认为-1
+        disabled: 0 //非必传项，默认为0
+      },],
+      iconType: -1,
+      index: 1,
+      mlang_key: 'OPTION_SBTL111',
+      selected: -1,
+      type: -1,
+      enable: 1
+    }]
+    const wrapper = mount({
+      setup() {
+        return () => {
+          return <Menu
+            data={openNextMneuData}
+            ref="menuRef"
+            onOnEnter={enterMenuItem}
+          />
+        }
+      }
+    })
+    const menuRef = await wrapper.findComponent({ ref: 'menuRef' }).vm as MenuInstance
+    expect(menuRef.currentItemIndex).toBe(0)
+    const menuItemList = wrapper.findAllComponents('.wh-list-item')
+    await menuItemList[1].trigger('click')
+    expect(menuRef.currentItemIndex).toBe(0)
+    expect(menuRef.currentMenuIndex).toBe(1)
+    expect(menuRef.currentMenuIndex).toBe(1)
+    await menuItemList[0].trigger('click')
+    expect(menuRef.currentItemIndex).toBe(1)
+    expect(menuRef.currentMenuIndex).toBe(1)
+  })
+
+  test('test Menu slot headerTitle ', async() => {
+      const wrapper = mount(Menu,{
+        slots: {
+          header: () => <span>Subtitles1</span>
+        },
+        props: {
+          data:[menuData],
+        }
+      }
+      )
+      expect(wrapper.text()).toContain('Subtitles1')
+      expect(wrapper.html()).toContain('<span>Subtitles1</span>')
+  });
 });
