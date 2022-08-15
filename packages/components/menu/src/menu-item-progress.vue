@@ -4,7 +4,7 @@
       <div class="wh-apc-line">
         <div :style="{ width: progressWidth }" class="wh-apc-progress"></div>
         <div
-          :style="{ left: (modelValue / maxSize) * 100 + '%' }"
+          :style="{ left: (modelValue / maxSize) * 100 + '%' }" 
           class="wh-apc-ball"
         ></div>
       </div>

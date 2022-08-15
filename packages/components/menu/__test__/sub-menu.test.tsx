@@ -313,7 +313,7 @@ describe('sub-menu', () => {
     // 通过 vm.$emit 手动触发可以拦截多次
   });
 
-  test('test submenu headerTitle', async () => {
+  test('test submenu cssHeaderTitle', async () => {
     const subMenuData = subMenuDataContainDisabled.map(
       item => new MenuItemNode(item)
     )
@@ -328,12 +328,29 @@ describe('sub-menu', () => {
         )}
     })
     const vm = await wrapper.findComponent({ ref: 'subMenuRef' }).vm as SubMenuInstance
-    expect(vm.headerTitle).toBe(undefined)
+    expect(vm.cssHeaderTitle).toBe(undefined)
     expect(wrapper.find('.wh-sc-header-title').exists()).toBe(false)
     await wrapper.setProps({
-      headerTitle:'Subtitles'
+      cssHeaderTitle:'Subtitles'
     })
     expect(wrapper.find('.wh-sc-header-title').isVisible()).toBe(true)
+  });
+  test('test slot headerTitle', async () => {
+    const subMenuData = subMenuDataContainDisabled.map(
+      item => new MenuItemNode(item)
+    )
+    const wrapper = mount((SubMenu),{
+      slots: {
+        header: () => <span>Subtitles</span>
+      },
+      props: {
+        id: 0,
+        subMenuData,
+      }
+    }
+    )
+    expect(wrapper.text()).toContain('Subtitles')
+    expect(wrapper.html()).toContain('<span>Subtitles</span>')
   });
   test('tets arrowUp arrowDown', () => {
     
