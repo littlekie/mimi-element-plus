@@ -1,5 +1,3 @@
-import { dialogExtraEmits, dialogExtraProps } from './dialog-extra-type'
-
 export const dialogContentProps = {
   center: {
     type: Boolean,
@@ -16,11 +14,9 @@ export const dialogContentProps = {
   title: {
     type: String,
     default: ''
-  },
-  ...dialogExtraProps
+  }
 }
 
 export const dialogContentEmits = {
-  close: () => true,
-  ...dialogExtraEmits
+  close: () => true
 }

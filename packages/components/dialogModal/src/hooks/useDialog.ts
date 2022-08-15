@@ -1,6 +1,6 @@
 import { CSSProperties, SetupContext } from 'vue'
 import { computed, getCurrentInstance, onMounted, ref, watch } from 'vue'
-import { DialogEmits, DialogProps } from './types/dialog-type'
+import { DialogEmits, DialogProps } from '../types/dialog-type'
 export const useDialog = (props: DialogProps) => {
   const instance = getCurrentInstance()!
   const emit = instance.emit as SetupContext<DialogEmits>['emit']
@@ -48,7 +48,6 @@ export const useDialog = (props: DialogProps) => {
   watch(
     () => props.modelValue,
     val => {
-      console.log('useDialog watch:', props.modelValue)
       if (val) {
         open()
         emit('open')
@@ -71,6 +70,7 @@ export const useDialog = (props: DialogProps) => {
       open()
     }
   })
+
   return {
     visible,
     style,

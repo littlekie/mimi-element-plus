@@ -1,10 +1,11 @@
 import { dialogContentProps } from './dialog-content-type'
 import { ExtractPropTypes } from 'vue'
 import { definePropType } from '../tokens'
-import { dialogExtraEmits } from './dialog-extra-type'
+import { DialogExtraEmits, DialogExtraProps } from './dialog-extra-type'
 
 export const dialogProps = {
   ...dialogContentProps,
+  ...DialogExtraProps,
   modelValue: {
     type: Boolean,
     default: false
@@ -31,10 +32,10 @@ export const dialogProps = {
 export type DialogProps = ExtractPropTypes<typeof dialogProps>
 
 export const dialogEmits = {
+  ...DialogExtraEmits,
   open: () => true,
-  close: () => true,
   ['update:modelValue']: (value: boolean) => value,
-  ...dialogExtraEmits
+  close: () => true
 }
 export type DialogEmits = typeof dialogEmits
 

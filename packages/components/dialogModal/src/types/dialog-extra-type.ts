@@ -1,16 +1,15 @@
-import { ComponentPublicInstance, PropType } from 'vue'
-import { BUTTON_TYPE } from '../useDialog'
+import { ComponentPublicInstance, ExtractPropTypes, PropType } from 'vue'
+import { BUTTON_TYPE } from '../hooks/useDialog'
 
-export const dialogExtraEmits = {
+export const DialogExtraEmits = {
+  close: () => true,
   cancel: () => true,
   confirm: () => true,
-  setDialogFocus: (vm: ComponentPublicInstance) => true,
-  removeDialogFocus: () => true
 }
-export const dialogExtraProps = {
+export const DialogExtraProps = {
   hasCancel: {
     type: Boolean,
-    default: true,
+    default: true
   },
   hasConfirm: {
     type: Boolean,
@@ -31,5 +30,7 @@ export const dialogExtraProps = {
   focusControl: {
     type: Boolean,
     default: true
-  },
+  }
 }
+export type ExtraDialogPropsType = ExtractPropTypes<typeof DialogExtraProps>
+export type ExtraDialogEmitsType = typeof DialogExtraEmits

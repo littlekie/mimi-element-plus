@@ -1,9 +1,5 @@
 <template>
-  <overlay
-    v-show="visible"
-    :mask="modal"
-    :overlay-class="modalClass"
-  >
+  <overlay v-show="visible" :mask="modal" :overlay-class="modalClass">
     <div
       role="dialog"
       aria-model="true"
@@ -16,15 +12,7 @@
         :center="center"
         :show-close="showClose"
         :title="title"
-        :cancel-text="cancelText"
-        :confirm-text="confirmText"
-        :default-focus="defaultFocus"
-        :focus-control="focusControl"
-        :has-cancel="hasCancel"
-        :has-confirm="hasConfirm"
         @close="handleClose"
-        @cancel="$emit('cancel')"
-        @confirm="$emit('confirm')"
         ref="dialogContentRef"
       >
         <template #header>
@@ -35,6 +23,21 @@
         <template v-if="$slots.footer" #footer>
           <slot name="footer"></slot>
         </template>
+        <template v-else #footer>
+          <dialog-footer
+            ref="defaultDialogFooter"
+            :cancel-text="cancelText"
+            :confirm-text="confirmText"
+            :default-focus="defaultFocus"
+            :focus-control="focusControl"
+            :has-cancel="hasCancel"
+            :has-confirm="hasConfirm"
+            @close="handleClose"
+            @cancel="$emit('cancel')"
+            @confirm="$emit('confirm')"
+          >
+          </dialog-footer>
+        </template>
       </dialog-content>
     </div>
   </overlay>
@@ -43,11 +46,12 @@
 import { provide, ref } from 'vue'
 import overlay from './components/overlay.vue'
 import dialogContent from './components/dialog-content.vue'
-import { useDialog } from './useDialog'
+import dialogFooter from './components/dialog-footer.vue'
+import { useDialog } from './hooks/useDialog'
 import { dialogInjectionKey } from './tokens'
 import { useNamespace } from '@mini-element-plus/hooks'
-
 import { dialogProps } from './types/dialog-type'
+
 const props = defineProps(dialogProps)
 const { onModalClick, handleClose, style, visible } = useDialog(props)
 const ns = useNamespace('dialogModal')
@@ -57,9 +61,14 @@ provide(dialogInjectionKey, {
   visible
 })
 const dialogContentRef = ref()
+const defaultDialogFooter = ref();
+const KEYDOWN = (e: Event) => {
+  defaultDialogFooter.value.KEYDOWN(e);
+}
 defineExpose({
   dialogContentRef,
-  visible
+  visible,
+  KEYDOWN
 })
 </script>
 <style lang="scss" scoped>
