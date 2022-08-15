@@ -59,11 +59,11 @@ import { isUndefined } from '@mini-element-plus/utils'
 
 interface ISubMenu {
   id: number
-  currentFocusMenuIndex: number
-  currentFocusItemIndex: number
+  subMenuData: MenuItemNode[]
+  currentFocusMenuIndex?: number
+  currentFocusItemIndex?: number
   cssHeaderTitle?: string
   headerTitle?: string
-  subMenuData: MenuItemNode[]
 }
 const props = withDefaults(defineProps<ISubMenu>(), {
   id: 0,
@@ -71,6 +71,7 @@ const props = withDefaults(defineProps<ISubMenu>(), {
   currentFocusItemIndex: 0
 })
 const menuItemActiveIndex = ref(props.currentFocusItemIndex)
+
 const lastMenuItemActiveIndex = ref(0)
 const upArrowShow = ref(false)
 const downArrowShow = ref(false)
@@ -96,7 +97,8 @@ watch(
     }
   },
   {
-    deep: true
+    deep: true,
+    immediate: true
   }
 )
 
@@ -105,7 +107,7 @@ const emit = defineEmits<{
   (e: 'collapseSubMenu', menuItem: MenuItemNode): void
   (e: 'berforeClose'): void
   (e: 'volumeBarAdjust', menuItem: MenuItemNode): void
-  (e: 'openNextMenu', menuItem: MenuItemNode[]): void
+  (e: 'openNextMenu', menuItem: MenuItemNode): void
   (e: 'update:currentFocusItemIndex', index: number): void
   (e: 'changeCurrentFocusItemIndex', index: number): void
 }>()
@@ -114,9 +116,14 @@ function clickItemHandler (menuItem: MenuItemNode, index: number) {
   if (menuItem.isDisabled) {
     return
   }
+  if (!menuItem.isLeaf) {
+    return emit('openNextMenu', menuItem)
+  }
   if (menuItem.nodeType === NodeType.IS_RADIO && !menuItem.isChecked) {
     props.subMenuData[menuItemActiveIndex.value].isChecked = false // TODO 后续是否要移到父级处理数据?
     menuItem.isChecked = true
+    setCurrentFocusItemIndex(index)
+    emit('clickItemHandler', menuItem)
   }
   setCurrentFocusItemIndex(index)
   emit('clickItemHandler', menuItem)
@@ -133,7 +140,7 @@ function ENTER () {
   } else if (menuItem.isLeaf) {
     emit('clickItemHandler', menuItem)
   } else {
-    emit('openNextMenu', menuItem.children)
+    emit('openNextMenu', menuItem)
   }
 }
 function searchLastNodeNoDisabledIndex () {

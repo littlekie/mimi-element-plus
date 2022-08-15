@@ -5,23 +5,27 @@
       :id="index"
       :key="index"
       :ref="subMenuRefList.set"
-      :menuId="index"
       :currentFocusItemIndex="currentItemIndex"
       :currentFocusMenuIndex="currentMenuIndex"
       :cssHeaderTitle="cssHeaderTitle"
+      :headerTitle="headerTitle"
       :sub-menu-data="menu"
       @openNextMenu="openNextMenu"
       @collapseSubMenu="collapseSubMenu"
       @berforeClose="berforeClose"
       @clickItemHandler="clickItemHandler"
       @changeCurrentFocusItemIndex="changeCurrentFocusItemIndex"
-    />
+    >
+      <template v-if="$slots.header" #header>
+        <slot name="header" />
+      </template>
+    </SubMenu>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useTemplateRefsList } from '@mini-element-plus/hooks'
-import { computed, ref } from 'vue'
+import { computed, ref, unref } from 'vue'
 import { SubMenuInstance } from '..'
 import MenuItemNode, { IMenuItemData } from './menu-item-node'
 import SubMenu from './sub-menu.vue'
@@ -53,12 +57,12 @@ function getParentData (menuItem: MenuItemNode) {
     getParentData(menuItem.parent)
   }
 }
-function openNextMenu (nextMenuItemList: MenuItemNode[]) {
-  menuList.value.push(nextMenuItemList)
+function openNextMenu (menuItem: MenuItemNode) {
+  menuList.value.push(menuItem.children)
   let newCurrentItemIndex = 0
-  newCurrentItemIndex = nextMenuItemList.findIndex(item => item.isChecked)
+  newCurrentItemIndex = menuItem.children.findIndex(item => item.isChecked)
   currentItemIndex.value = newCurrentItemIndex > -1 ? newCurrentItemIndex : 0
-  currentMenuIndex.value += 1
+  currentMenuIndex.value = menuItem.level
 }
 function collapseSubMenu (menuItem: MenuItemNode) {
   currentMenuIndex.value -= 1
@@ -67,8 +71,8 @@ function collapseSubMenu (menuItem: MenuItemNode) {
 }
 function berforeClose () {
   // TODO berforeClose
-	console.log('berforeClose')
-	emit('closeMenu')
+  console.log('berforeClose')
+  emit('closeMenu')
 }
 const emit = defineEmits<{
   (e: 'onEnter', menuItem: MenuItemNode): void
@@ -105,7 +109,7 @@ defineExpose({
   currentMenuIndex,
   currentMenuItemData,
   subMenuRefList,
-	KEYDOWN
+  KEYDOWN
 })
 </script>
 
