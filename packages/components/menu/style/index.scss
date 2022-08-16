@@ -1,0 +1,211 @@
+@import "../../../theme/src/mixins/mixins.scss";
+.option-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 42;
+  display: flex;
+  width: 12.8rem;
+  height: 7.2rem;
+
+  .wh-sidebar {
+    display: flex;
+    position: relative;
+    width: 3.2rem;
+    height: 7.2rem;
+    margin-right: 0.01rem;
+    overflow: hidden;
+    @include background_all("menu_background");
+    flex-direction: column;
+    align-content: space-between;
+
+    .wh-sc-header {
+      display: flex;
+      display: inline-block;
+      height: 0.48rem;
+      margin: 0 0.2rem;
+      align-items: center;
+
+      .wh-sc-header-title {
+        display: flex;
+        width: 2.7rem;
+        margin: 0.2rem 0.35rem;
+        font-size: 0.2rem;
+        color: #fff;
+
+        .wh-st-text {
+          font-size: 0.26rem;
+          line-height: 0.26rem;
+          text-align: center;
+        }
+      }
+
+      .underline {
+        width: 2.7rem;
+        height: 0.015rem;
+        border-bottom: 0.01rem solid #fff;
+      }
+    }
+
+    .arrow {
+      position: relative;
+      display: flex;
+      height: 0.45rem;
+      margin-left: 1.45rem;
+      font-size: 0.3rem;
+    }
+
+    .arrow-up {
+      transform: rotate(180deg);
+    }
+
+    .icon-switch_down2 {
+      width: 0.36rem;
+      height: 0.36rem;
+      background-color: rgba(255, 255, 255, 1);
+      padding: 0 0 0.1rem 0;
+    }
+
+    .wh-sc-content {
+      display: flex;
+      width: 4.2rem;
+      height: 100%;
+      min-width: 3.6rem;
+
+      .wh-sc-content-list {
+        position: relative;
+        top: 0;
+        display: flex;
+        width: 4.2rem;
+        height: 14.4rem;
+        min-width: 3.6rem;
+        overflow: hidden;
+        flex-direction: column;
+
+        .wh-list-item {
+          position: relative;
+          display: flex;
+          width: 2.5rem;
+          height: 0.5rem;
+          min-width: 2.5rem;
+          min-height: 0.5rem;
+          padding: 0 0.1rem;
+          margin: 0.1rem 0 0.1rem 0;
+          overflow: hidden;
+          font-size: 0.2rem;
+          line-height: 0.5rem;
+          @include font_color("default_color");
+          border-radius: 0.08rem;
+          outline: none;
+          direction: ltr;
+          justify-content: flex-start;
+          align-items: center;
+
+          .marqueeDiv {
+            max-width: 354px;
+          }
+
+          .wh-item-content {
+            display: flex;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            flex: 1;
+          }
+
+          .menuItem__Prefix {
+            width: 0.3rem;
+          }
+
+          .menuItem__postfix {
+            left: 2.3rem;
+          }
+        }
+
+        .is_disabled {
+          opacity: 0.7;
+        }
+
+        .in_active_path {
+          @include background_all("item_background");
+        }
+
+        .wh-option-progress {
+          display: flex;
+          width: 2.5rem;
+          height: 100%;
+          max-height: 0.5rem;
+          min-width: 2.1rem;
+          padding: 0 0.1rem;
+          margin: 0 0.1rem;
+          border-radius: 0.08rem;
+          justify-content: space-between;
+
+          .wh-ap-currentValue {
+            position: relative;
+            width: 85%;
+            margin: 0 0.1rem;
+
+            .wh-apc-line {
+              position: absolute;
+              top: 0.25rem;
+              left: 0;
+              display: inline-block;
+              width: 100%;
+              height: 0.04rem;
+              background: rgba(255, 255, 255, 0.2);
+
+              .wh-apc-progress {
+                height: 100%;
+                background: rgba(255, 255, 255, 1);
+              }
+
+              .wh-apc-ball {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                display: inline-block;
+                width: 0.01rem;
+                height: 0.01rem;
+                padding: 0.04rem;
+                background: inherit;
+                background: #000;
+                border-radius: 50%;
+              }
+            }
+          }
+
+          .wh-ap-maxSize {
+            font-size: 0.2rem;
+            line-height: 0.5rem;
+            text-align: center;
+          }
+
+          &.highlight {
+            color: rgba(0, 0, 0, 1);
+            .wh-apc-progress {
+              background: rgba(0, 0, 0, 0.9) !important;
+            }
+          }
+        }
+
+        .__postfix {
+          position: absolute;
+          right: 10px;
+        }
+
+        .highlight {
+          color: #000;
+          @include background_all("focus_color");
+          @include font_color("focus_text_color");
+        }
+      }
+    }
+
+    .wh-sc-content,
+    .wh-sc-footer {
+      margin: 0 0.2rem;
+      overflow: hidden;
+    }
+  }
+}

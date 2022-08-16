@@ -1,0 +1,65 @@
+// 典雅灰
+$elegant_grey: (
+    // 聚焦时文字/背景/边框的颜色: 纯色/渐变/图片
+    focus_color: #A3FE65,
+    // 聚焦时有聚焦背景色的文字颜色: 纯色
+    focus_text_color: #101010,
+    // 默认状态下文字/背景/边框的颜色: 纯色/渐变/图片
+    default_color: rgba(241, 241, 241, 1),
+    // 默认状态下有背景色的文字颜色: 纯色
+    default_text_color: rgba(255, 255, 255, 1),
+    // 按钮、setting/option 菜单item 背景色
+    item_background: rgba(254, 226, 226, 0.1),
+    // myApps页面右上角option的标题名字
+    option_bar_title:rgba(255, 255, 255, 0.6),
+    // setting中的进度条颜色
+    setting_progress_bar_default: rgba(255, 255, 255, 1),
+    // 聚焦时setting中的进度条颜色
+    setting_progress_bar_focus: #000,
+    // setting中的进度条背景色
+    setting_progress_bar_background: rgba(255, 255, 255, 0.2),
+    // 聚焦时setting中的进度条背景色
+    setting_progress_bar_background_focus: rgba(255, 255, 255, 0.2),
+    // source中的进度条颜色
+    source_progress_bar_default: rgba(255, 255, 225, 0.28),
+    // 聚焦时source中的进度条颜色
+    source_progress_bar_focus: #fff,
+    // source中的进度条背景色
+    source_progress_bar_background: rgba(255, 255, 225, 0.28),
+    // 半屏menu/option
+    menu_background: rgba(0, 0, 0, .9),
+    // dialog背景色
+    dialog_background: rgba(0, 0, 0, 1),
+    // dialog 分割线颜色
+    dialog_divider_color: rgba(255, 255, 255, 0.2),
+    // global menu 菜单背景色
+    global_menu_background: rgba(0, 0, 0, .9),
+    //  global menu setting菜单子项的文字颜色
+    global_menu_item_color: #7F7F7F,
+    // AD背景
+    A_D_background:#414540,
+    //usb 控制栏背景颜色 播放列表颜色
+    USB_barbg: #101010,
+    //usb 整体背景颜色
+    USB_bg: #3C3C3C,
+    //usb 进度条颜色
+    USB_progress_bg: #FFF,
+    // 蓝牙遥控器配对
+    // 卡片背景色
+    card_item_bg:rgba(255, 255, 255, 0.08),
+    // 卡片聚焦背景色
+    card_item_active_bg: #fff,
+    // 卡片文字颜色色
+    item_text_color:rgba(255, 255, 255, 0.6),
+    // 卡片聚焦文字颜色
+    item_text__color_active:rgba(155, 155, 155, 1),
+    // 电影卡片背景色
+    movie_item_bg: rgba(26, 26, 26, 0.8),
+    // 最近观看的背景色
+    watch_text_bg: rgba(52, 52, 52, 1),
+    // app卡片背景色
+    app_item_bg: rgba(241, 241, 241, 1),
+    // my apps mask背景色
+    apps_remove_mask_bg: rgba(0, 0, 0, 0.4),
+    // 音量条
+)

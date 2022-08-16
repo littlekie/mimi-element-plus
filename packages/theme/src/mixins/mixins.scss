@@ -1,0 +1,12 @@
+
+@use "sass:map";
+@use 'function' as *;
+@mixin font_color($color) {
+  color: get_skin_value($color);
+}
+@mixin background_all($value) {
+  background: get_skin_value($value);
+}
+@mixin font_color($color) {
+  color: get_skin_value($color);
+}
