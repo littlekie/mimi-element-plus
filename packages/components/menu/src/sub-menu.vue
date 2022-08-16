@@ -1,10 +1,8 @@
 <template>
   <div :id="'sidebar_' + id" class="wh-sidebar" role="subMenu">
     <div class="wh-sc-header">
-      <slot name="header">
-        <template
-          v-if="!isUndefined(cssHeaderTitle || headerTitle) && id === 0"
-        >
+      <slot name="header" v-if="id === 0">
+        <template v-if="!isUndefined(cssHeaderTitle || headerTitle)">
           <div class="wh-sc-header-title">
             <span class="wh-st-text" :class="cssHeaderTitle"
               >{{ headerTitle }}}</span
@@ -15,19 +13,20 @@
       </slot>
     </div>
     <div class="arrow-up iconfont">
-      <span v-show="upArrowShow" class="arrow icon-switch_down2"> </span>
+      <span class="arrow" :class="{'icon-switch_down2':upArrowShow}">  </span>
     </div>
     <div class="wh-sc-content">
       <div class="wh-sc-content-list">
         <template v-for="(item, index) in subMenuData">
           <MenuItemProgress
             v-if="item.nodeType === NodeType.IS_BAR"
+            :isFocus="activeMenu && currentFocusItemIndex === index"
             :ref="menuItemProgressRef.set"
             :key="index + item.nodeType"
             :max-size="item.progressMaxSize"
             :min-size="item.progressMinSize"
-            @on-change="changeProgress(item)"
             v-model="item.progressValue"
+            @on-change="changeProgress(item)"
           />
           <menu-item
             v-else
@@ -43,7 +42,7 @@
       </div>
     </div>
     <div class="arrow-down iconfont">
-      <span v-show="downArrowShow" class="arrow icon-switch_down2"></span>
+      <span class="arrow" :class="{'icon-switch_down2':downArrowShow}">  </span>
     </div>
   </div>
 </template>
@@ -70,12 +69,15 @@ const props = withDefaults(defineProps<ISubMenu>(), {
   currentFocusMenuIndex: 0,
   currentFocusItemIndex: 0
 })
-const menuItemActiveIndex = ref(props.currentFocusItemIndex)
 
+const menuItemActiveIndex = ref(0)
 const lastMenuItemActiveIndex = ref(0)
 const upArrowShow = ref(false)
 const downArrowShow = ref(false)
 const activeMenu = computed(() => props.currentFocusMenuIndex === props.id)
+if (activeMenu) {
+  setCurrentFocusItemIndex(props.currentFocusItemIndex)
+}
 const menuItemActiveItem = computed(
   () => props.subMenuData[menuItemActiveIndex.value]
 )
@@ -91,7 +93,7 @@ watch(
 watch(
   () => props.subMenuData,
   newValue => {
-    if (newValue?.length) {
+    if (newValue?.length && activeMenu.value) {
       const selectedIndex = newValue.findIndex(item => item.isChecked)
       menuItemActiveIndex.value = selectedIndex > -1 ? selectedIndex : 0
     }
@@ -117,13 +119,16 @@ function clickItemHandler (menuItem: MenuItemNode, index: number) {
     return
   }
   if (!menuItem.isLeaf) {
+    setCurrentFocusItemIndex(index)
+    emit('clickItemHandler', menuItem)
     return emit('openNextMenu', menuItem)
   }
   if (menuItem.nodeType === NodeType.IS_RADIO && !menuItem.isChecked) {
     props.subMenuData[menuItemActiveIndex.value].isChecked = false // TODO 后续是否要移到父级处理数据?
     menuItem.isChecked = true
-    setCurrentFocusItemIndex(index)
-    emit('clickItemHandler', menuItem)
+  }
+  if (!menuItem.parent && menuItem.isLeaf) {
+     emit('collapseSubMenu',menuItem)
   }
   setCurrentFocusItemIndex(index)
   emit('clickItemHandler', menuItem)

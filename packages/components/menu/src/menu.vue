@@ -5,8 +5,8 @@
       :id="index"
       :key="index"
       :ref="subMenuRefList.set"
-      :currentFocusItemIndex="currentItemIndex"
-      :currentFocusMenuIndex="currentMenuIndex"
+      v-model:currentFocusItemIndex="currentItemIndex"
+      v-model:currentFocusMenuIndex="currentMenuIndex"
       :cssHeaderTitle="cssHeaderTitle"
       :headerTitle="headerTitle"
       :sub-menu-data="menu"
@@ -14,7 +14,6 @@
       @collapseSubMenu="collapseSubMenu"
       @berforeClose="berforeClose"
       @clickItemHandler="clickItemHandler"
-      @changeCurrentFocusItemIndex="changeCurrentFocusItemIndex"
     >
       <template v-if="$slots.header" #header>
         <slot name="header" />
@@ -58,6 +57,7 @@ function getParentData (menuItem: MenuItemNode) {
   }
 }
 function openNextMenu (menuItem: MenuItemNode) {
+  menuList.value = menuList.value.slice(0, menuItem.level)
   menuList.value.push(menuItem.children)
   let newCurrentItemIndex = 0
   newCurrentItemIndex = menuItem.children.findIndex(item => item.isChecked)
@@ -65,9 +65,15 @@ function openNextMenu (menuItem: MenuItemNode) {
   currentMenuIndex.value = menuItem.level
 }
 function collapseSubMenu (menuItem: MenuItemNode) {
-  currentMenuIndex.value -= 1
-  currentItemIndex.value = menuItem.parent!.value
-  menuList.value = menuList.value.slice(0, menuItem.level - 1)
+  if (menuItem.parent) {
+    currentMenuIndex.value -= 1
+    currentItemIndex.value = menuItem.parent.value
+    menuList.value = menuList.value.slice(0, menuItem.level - 1)
+  } else {
+    menuList.value = menuList.value.slice(0, 1)
+    currentMenuIndex.value = 0
+    currentItemIndex.value = menuItem.value
+  }
 }
 function berforeClose () {
   // TODO berforeClose
@@ -79,13 +85,9 @@ const emit = defineEmits<{
   (e: 'closeMenu'): void
 }>()
 function clickItemHandler (menuItem: MenuItemNode) {
-  currentItemIndex.value = menuItem.value
   emit('onEnter', menuItem)
 }
 
-function changeCurrentFocusItemIndex (index: number) {
-  currentItemIndex.value = index
-}
 function updateMenuList () {
   menuList.value = [props.data.map(item => new MenuItemNode(item))]
 }

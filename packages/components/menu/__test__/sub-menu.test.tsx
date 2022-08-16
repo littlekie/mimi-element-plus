@@ -16,18 +16,18 @@ const menuItemData = {
     }
   ],
   iconType: -1,
-  index: 2,
+  index: 0,
   mlang_key: 'OPTION_SBTL',
   selected: 0,
   type: -1,
   enable: 1
 }
-const subMenuDataContainDisabled = [
+export const subMenuDataContainDisabled = [
   menuItemData,
   {
     data: [],
     iconType: -1,
-    index: 2,
+    index: 1,
     mlang_key: 'OPTION_SBTL1',
     selected: 0,
     type: -1,
@@ -36,7 +36,7 @@ const subMenuDataContainDisabled = [
   {
     data: [],
     iconType: -1,
-    index: 3,
+    index: 2,
     mlang_key: 'OPTION_UAM_DIALOG_ENHANCE_LEVEL',
     selected: 0,
     type: -1,
