@@ -1,11 +1,7 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
 import { Menu, MenuInstance } from '@mini-element-plus/components/menu'
-import { ref } from 'vue'
-import { mebuData } from '../packages/components/menu/__test__/mock';
-mebuData
+import { ref, onBeforeUnmount,onMounted } from 'vue'
+import { mebuData } from '@mini-element-plus/components/menu/__test__/mock'
 import '@mini-element-plus/components/menu/style/index.scss'
 const reference = ref<MenuInstance>()
 const actions: any = {
@@ -20,20 +16,32 @@ const actions: any = {
 document.addEventListener('keyup', event => {
   reference.value?.KEYDOWN(actions[event.key])
 })
+// onMounted(() => {
+// 	document.getElementById('menu_contain').style.fontSize =
+//   100 * (window.innerWidth / 1280) + 'px'
+// window.onresize = function () {
+//   document.getElementById('menu_contain').style.fontSize =
+//     100 * (window.innerWidth / 1280) + 'px'
+// }
+// })
 </script>
 
 <template>
-  <Menu :data="mebuData" ref="reference" :visible="true">
+	<div class="menu_contain" id="menu_contain">
+		  <Menu :data="mebuData" ref="reference" :visible="true">
     <template #header>
       <div style="font-size:.3rem;color:red">
         i am menu title
       </div>
     </template>
   </Menu>
+	</div>
 </template>
 
 <style>
-@import './assets/eng.css';
+@import '@mini-element-plus/components/menu/style/index.scss';
+@import '../../../src/assets/eng.css';
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -44,5 +52,18 @@ document.addEventListener('keyup', event => {
 }
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
+}
+.menu_contain{
+	position: relative;
+}
+.option-wrapper {
+    position: relative;;
+}
+</style>
+
+
+<style >
+html{
+	font-size: 40px;
 }
 </style>
