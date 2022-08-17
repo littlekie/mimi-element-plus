@@ -14,7 +14,7 @@ hero:
       link: /zh-CN/index
     - theme: alt
       text: View on GitHub
-      link: https://github.com/vuejs/vitepress
+      link: https://github.com/littlekie/mimi-element-plus
 
 features:
   - title: "Vite: The DX that can't be beat"

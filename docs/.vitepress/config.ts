@@ -1,48 +1,47 @@
-import { UserConfig } from 'vitepress'
+import { defineConfig, UserConfig } from 'vitepress'
 
-const nav = [
-  { text: '首页', link: '/' },
-  { text: '组件', link: '/zh-CN/components/menu', target: '_blank' }
-  // //通过items数组设置下拉列表
-  // {
-  //   text: 'Languages',
-  //   ariaLabel: 'Language Menu',
-  //   items: [
-  //     { text: 'Chinese', link: '/language/chinese/' },
-  //     { text: 'Japanese', link: '/language/japanese/' }
-  //   ]
-  // },
-]
 
-const sidebar = [
-  {
-    text: '基础组件',
-    items: [
-      { text: 'Menu', link: '../zh-CN/components/menu' },
-      { text: 'Modal', link: '../zh-CN/components/modal' },
-      { text: 'Modal123', link: '../zh-CN/components/modal' }
-    ],
-    collapsible: true
-  }
-]
 
-const config: UserConfig = {
+export default defineConfig( {
   lang: 'zh-CN',
   title: 'mini-element-plus',
   description: 'study element-plus',
   base: '/',
   themeConfig: {
     logo: '/logo.jpg',
-    nav,
-    sidebar
-  }
-  /*  markdown: {
-    config: (md) => {
-      // 这里可以使用 markdown-it 插件，vitepress-theme-demoblock就是基于此开发的
-      const { demoBlockPlugin } = require('vitepress-theme-demoblock')
-      md.use(demoBlockPlugin)
+    nav:nav(),
+    sidebar: {
+      '/zh-CN/guide/': sidebarGuide(),
+      '/zh-CN/component/': sidebarComponent(),
     }
-  } */
-}
+  },
+})
 
-export default config
+function nav() {
+  return [
+    { text: '指南', link: '/zh-CN/guide/index',activeMatch: '/zh-CN/guide/' },
+    { text: '组件', link: '/zh-CN/component/menu',activeMatch: '/zh-CN/component/menu' }
+  ]
+}
+function sidebarGuide() {
+  return [
+    {
+      text: '指南',
+      items: [
+        { text: '', link: '../zh-CN/guide/index' },
+      ]
+    }
+  ]
+}
+function sidebarComponent(){
+  return [
+    {
+      text: '基础组件',
+      items: [
+        { text: 'Menu', link: '../zh-CN/component/menu' },
+        { text: 'Modal', link: '../zh-CN/component/modal' }
+      ],
+      collapsible: true
+    }
+  ]
+}
