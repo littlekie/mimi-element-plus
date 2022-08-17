@@ -13,14 +13,14 @@ export default defineConfig( {
     sidebar: {
       '/zh-CN/guide/': sidebarGuide(),
       '/zh-CN/component/': sidebarComponent(),
-    }
+    },
   },
 })
 
 function nav() {
   return [
-    { text: '指南', link: '/zh-CN/guide/index',activeMatch: '/zh-CN/guide/' },
-    { text: '组件', link: '/zh-CN/component/menu',activeMatch: '/zh-CN/component/menu' }
+    { text: '指南', link: '/zh-CN/guide/introduce',activeMatch: '/zh-CN/guide/' },
+    { text: '组件', link: '/zh-CN/component/menu',activeMatch: '/zh-CN/component/' }
   ]
 }
 function sidebarGuide() {
@@ -28,7 +28,8 @@ function sidebarGuide() {
     {
       text: '指南',
       items: [
-        { text: '', link: '../zh-CN/guide/index' },
+        { text: '简介', link: '/zh-CN/guide/introduce' },
+        { text: '遇到的问题', link: '/zh-CN/guide/problem' },
       ]
     }
   ]
@@ -38,8 +39,8 @@ function sidebarComponent(){
     {
       text: '基础组件',
       items: [
-        { text: 'Menu', link: '../zh-CN/component/menu' },
-        { text: 'Modal', link: '../zh-CN/component/modal' }
+        { text: 'Menu', link: '/zh-CN/component/menu' },
+        { text: 'Modal', link: '/zh-CN/component/modal' }
       ],
       collapsible: true
     }

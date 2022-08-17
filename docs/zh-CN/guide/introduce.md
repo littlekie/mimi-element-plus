@@ -1,4 +1,4 @@
-# Gudie
+# 简介
 
 ## what is mini-element-plus?
 

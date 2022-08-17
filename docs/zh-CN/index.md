@@ -1,4 +1,4 @@
 # 组件
 
-- [Menu](./components/menu.md)
-- [modal](./components/modal.md)
+- [Menu](./component/menu.md)
+- [modal](./component/modal.md)
