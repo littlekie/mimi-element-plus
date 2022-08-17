@@ -1,0 +1,7 @@
+@use 'sass:map';
+@import '../themes/elegant_grey.scss';
+
+$skin-map:$elegant_grey;
+@function get_skin_value($key) {
+  @return map-get($skin-map, $key)
+}

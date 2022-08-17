@@ -16,18 +16,18 @@ const menuItemData = {
     }
   ],
   iconType: -1,
-  index: 2,
+  index: 0,
   mlang_key: 'OPTION_SBTL',
   selected: 0,
   type: -1,
   enable: 1
 }
-const subMenuDataContainDisabled = [
+export const subMenuDataContainDisabled = [
   menuItemData,
   {
     data: [],
     iconType: -1,
-    index: 2,
+    index: 1,
     mlang_key: 'OPTION_SBTL1',
     selected: 0,
     type: -1,
@@ -36,7 +36,7 @@ const subMenuDataContainDisabled = [
   {
     data: [],
     iconType: -1,
-    index: 3,
+    index: 2,
     mlang_key: 'OPTION_UAM_DIALOG_ENHANCE_LEVEL',
     selected: 0,
     type: -1,
@@ -46,7 +46,7 @@ const subMenuDataContainDisabled = [
 const _mountSubMenu = (subMenuData: MenuItemNode[]) =>
   mount(SubMenu, {
     props: {
-      id: 1,
+      id: 0,
       subMenuData
     }
   })
@@ -56,11 +56,7 @@ describe('sub-menu', () => {
     const subMenuData = [menuItemData, menuItemData].map(
       item => new MenuItemNode(item)
     )
-    const wrapper = mount(SubMenu) as VueWrapper<any>
-    await wrapper.setProps({
-      id: 0,
-      subMenuData
-    })
+    const wrapper = _mountSubMenu(subMenuData)
     const vm = wrapper.vm as SubMenuInstance
     expect(vm.currentFocusMenuIndex).toBe(0)
     expect(vm.currentFocusItemIndex).toBe(0)
@@ -82,11 +78,7 @@ describe('sub-menu', () => {
     const subMenuData = subMenuDataContainDisabled.map(
       item => new MenuItemNode(item)
     )
-    const wrapper = mount(SubMenu)
-    await wrapper.setProps({
-      id: 0,
-      subMenuData
-    })
+    const wrapper = _mountSubMenu(subMenuData)
     const vm = wrapper.vm as SubMenuInstance
     const itemList = wrapper.findAllComponents('.wh-list-item')
     expect(itemList.length).toBe(3)
@@ -97,7 +89,7 @@ describe('sub-menu', () => {
   })
 
   test('test click or enter menu-item had selectedIcon', async () => {
-    const subMenuData = [{
+    const subMenuData= [{
       data: [], 
       iconType: 0, 
       index: 0, 
@@ -109,7 +101,7 @@ describe('sub-menu', () => {
     {
       data: [], 
       iconType: 0, 
-      index: 0, 
+      index: 1, 
       mlang_key: 'OPTION_SUBTITLES_ON', 
       selected: 1, 
       type: 0, 
@@ -117,7 +109,7 @@ describe('sub-menu', () => {
     },{
       data: [], 
       iconType: 0, 
-      index: 0, 
+      index: 2, 
       mlang_key: 'OPTION_SUBTITLES_ON', 
       selected: 0, 
       type: 0, 
@@ -125,7 +117,7 @@ describe('sub-menu', () => {
     },  {
       data: [], 
       iconType: 0, 
-      index: 0, 
+      index: 3, 
       mlang_key: 'OPTION_SUBTITLES_ON', 
       selected: 0, 
       type: 0, 
@@ -133,19 +125,14 @@ describe('sub-menu', () => {
     }].map(
       item => new MenuItemNode(item)
     )
-    const wrapper = mount(SubMenu)
-    await wrapper.setProps({
-      id: 0,
-      subMenuData
-    })
+    const wrapper = _mountSubMenu(subMenuData)
     const vm = wrapper.vm as SubMenuInstance
-    const itemList = wrapper.findAllComponents('.wh-menu-item')
+    const itemList = await wrapper.findAllComponents('.wh-menu-item')
     expect(itemList.length).toBe(4)
     expect(itemList[0].find('.icon-Selection').exists()).toBe(false)
     expect(itemList[1].find('.icon-Selection').exists()).toBe(true)
     expect(vm.menuItemActiveIndex).toBe(1)
     await itemList[0].trigger('click')
-    await nextTick()
     expect(vm.menuItemActiveIndex).toBe(0)
     expect(itemList[0].find('.icon-Selection').exists()).toBe(true)
     expect(itemList[1].find('.icon-Selection').exists()).toBe(false)
@@ -175,10 +162,13 @@ describe('sub-menu', () => {
       item => new MenuItemNode(item)
     )
     const foucsIndex = ref(0)
-    const wrapper = mount(SubMenu)
+    const wrapper = mount(SubMenu, {
+      props: {
+        id: 0,
+        subMenuData,
+      }
+    })
     await wrapper.setProps({
-      id: 0,
-      subMenuData,
       currentFocusItemIndex: foucsIndex
     })
     const vm = wrapper.vm as SubMenuInstance
@@ -313,7 +303,7 @@ describe('sub-menu', () => {
     // 通过 vm.$emit 手动触发可以拦截多次
   });
 
-  test('test submenu headerTitle', async () => {
+  test('test submenu cssHeaderTitle', async () => {
     const subMenuData = subMenuDataContainDisabled.map(
       item => new MenuItemNode(item)
     )
@@ -328,13 +318,32 @@ describe('sub-menu', () => {
         )}
     })
     const vm = await wrapper.findComponent({ ref: 'subMenuRef' }).vm as SubMenuInstance
-    expect(vm.headerTitle).toBe(undefined)
+    expect(vm.cssHeaderTitle).toBe(undefined)
     expect(wrapper.find('.wh-sc-header-title').exists()).toBe(false)
     await wrapper.setProps({
-      headerTitle:'Subtitles'
+      cssHeaderTitle:'Subtitles'
     })
     expect(wrapper.find('.wh-sc-header-title').isVisible()).toBe(true)
   });
+
+  test('test slot headerTitle', async () => {
+    const subMenuData = subMenuDataContainDisabled.map(
+      item => new MenuItemNode(item)
+    )
+    const wrapper = mount((SubMenu),{
+      slots: {
+        header: () => <span>Subtitles</span>
+      },
+      props: {
+        id: 0,
+        subMenuData,
+      }
+    }
+    )
+    expect(wrapper.text()).toContain('Subtitles')
+    expect(wrapper.html()).toContain('<span>Subtitles</span>')
+  });
+
   test('tets arrowUp arrowDown', () => {
     
   });
