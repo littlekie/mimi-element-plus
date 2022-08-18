@@ -13,16 +13,8 @@ const actions: any = {
   Backspace: 'BACK',
   Escape: 'BACK'
 }
-document.addEventListener('keyup', event => {
-  reference.value?.KEYDOWN(actions[event.key])
-})
-// onMounted(() => {
-// 	document.getElementById('menu_contain').style.fontSize =
-//   100 * (window.innerWidth / 1280) + 'px'
-// window.onresize = function () {
-//   document.getElementById('menu_contain').style.fontSize =
-//     100 * (window.innerWidth / 1280) + 'px'
-// }
+// window.document.addEventListener('keyup', event => {
+//   reference.value?.KEYDOWN(actions[event.key])
 // })
 </script>
 
