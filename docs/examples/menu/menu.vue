@@ -13,9 +13,11 @@ const actions: any = {
   Backspace: 'BACK',
   Escape: 'BACK'
 }
-// window.document.addEventListener('keyup', event => {
-//   reference.value?.KEYDOWN(actions[event.key])
-// })
+onMounted(() => {
+  window.document.addEventListener('keyup', event => {
+    reference.value?.KEYDOWN(actions[event.key])
+  })
+})
 </script>
 
 <template>
@@ -40,8 +42,6 @@ const actions: any = {
     position: relative;;
 }
 </style>
-
-
 <style >
 html{
 	font-size: 40px;
