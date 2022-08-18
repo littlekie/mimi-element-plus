@@ -7,7 +7,7 @@
     <meta name="description" content="study element-plus">
     <link rel="stylesheet" href="/mimi-element-plus/assets/style.ae4c423e.css">
     <link rel="modulepreload" href="/mimi-element-plus/assets/app.b2947a9f.js">
-    <link rel="modulepreload" href="/mimi-element-plus/assets/zh-CN_guide_problem.md.aeb16f8b.lean.js">
+    <link rel="modulepreload" href="/mimi-element-plus/assets/zh-CN_guide_problem.md.719d7549.lean.js">
     
     <script id="check-dark-light">(()=>{const e=localStorage.getItem("vitepress-theme-appearance"),a=window.matchMedia("(prefers-color-scheme: dark)").matches;(!e||e==="auto"?a:e==="dark")&&document.documentElement.classList.add("dark")})();</script>
   </head>
@@ -36,7 +36,7 @@
 <span class="line"><span style="color:#F07178;">  ]</span></span>
 <span class="line"></span></code></pre></div><h2 id="搭建自动部署问题" tabindex="-1">搭建自动部署问题 <a class="header-anchor" href="#搭建自动部署问题" aria-hidden="true">#</a></h2><p>可以在跟目录创建 <code>.github/workflows/deploy.yml</code></p><div class="tip custom-block"><p class="custom-block-title">TIP</p><pre><code>  `- name: Install PNPM`
    ` run: npm i -g pnpm`
-</code></pre><p>需要增加着两行，因为 github 上没有 pnpm 环境要手动安装</p></div><div class="language-yaml"><button class="copy"></button><span class="lang">yaml</span><pre><code><span class="line"><span style="color:#F07178;">name</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">Deploy</span></span>
+</code></pre><p>需要增加着两行，因为 github 上没有 pnpm 环境要手动安装</p><p>是<code>commit_message</code> 不是 <code>commit-message</code></p></div><div class="language-yaml"><button class="copy"></button><span class="lang">yaml</span><pre><code><span class="line"><span style="color:#F07178;">name</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">Deploy</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#FF9CAC;">on</span><span style="color:#89DDFF;">:</span></span>
 <span class="line"><span style="color:#A6ACCD;">  </span><span style="color:#F07178;">push</span><span style="color:#89DDFF;">:</span></span>
@@ -63,9 +63,9 @@
 <span class="line"><span style="color:#A6ACCD;">        </span><span style="color:#F07178;">with</span><span style="color:#89DDFF;">:</span></span>
 <span class="line"><span style="color:#A6ACCD;">          </span><span style="color:#F07178;">github_token</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">${{ secrets.GITHUB_TOKEN }}</span></span>
 <span class="line"><span style="color:#A6ACCD;">          </span><span style="color:#F07178;">publish_dir</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">docs/.vitepress/dist</span></span>
-<span class="line"><span style="color:#A6ACCD;">          </span><span style="color:#F07178;">commit-message</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">website deploy</span></span>
+<span class="line"><span style="color:#A6ACCD;">          </span><span style="color:#F07178;">commit_message</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">website deploy</span></span>
 <span class="line"></span></code></pre></div></div></div></main><!--[--><!--]--><footer class="VPDocFooter" data-v-3547ab9d data-v-36ee696f><!----><div class="prev-next" data-v-36ee696f><div class="pager" data-v-36ee696f><a class="pager-link prev" href="/mimi-element-plus/zh-CN/guide/introduction.html" data-v-36ee696f><span class="desc" data-v-36ee696f>Previous page</span><span class="title" data-v-36ee696f>简介</span></a></div><div class="has-prev pager" data-v-36ee696f><!----></div></div></footer><!--[--><!--]--></div></div></div></div></div><!----><!--[--><!--]--></div></div>
-    <script>__VP_HASH_MAP__ = JSON.parse("{\"examples_index.md\":\"fbb13682\",\"index.md\":\"4b026af9\",\"zh-cn_component_menu.md\":\"9863ee07\",\"zh-cn_component_modal.md\":\"ee65e754\",\"zh-cn_guide_introduction.md\":\"36bd8424\",\"zh-cn_guide_problem.md\":\"aeb16f8b\",\"zh-cn_index.md\":\"5609cdc8\"}")</script>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"examples_index.md\":\"fbb13682\",\"index.md\":\"4b026af9\",\"zh-cn_component_menu.md\":\"9863ee07\",\"zh-cn_component_modal.md\":\"ee65e754\",\"zh-cn_guide_introduction.md\":\"36bd8424\",\"zh-cn_guide_problem.md\":\"719d7549\",\"zh-cn_index.md\":\"5609cdc8\"}")</script>
     <script type="module" async src="/mimi-element-plus/assets/app.b2947a9f.js"></script>
     
   </body>
