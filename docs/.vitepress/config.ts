@@ -1,11 +1,10 @@
-import { defineConfig, UserConfig } from 'vitepress'
-
-
+import { defineConfig } from 'vitepress'
 
 export default defineConfig( {
   lang: 'zh-CN',
   title: 'mini-element-plus',
   description: 'study element-plus',
+  base: '/mimi-element-plus/',
   themeConfig: {
     logo: '/logo.jpg',
     nav:nav(),
