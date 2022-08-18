@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /zh-CN/index
+      link: /zh-CN/docs/introduction
     - theme: alt
       text: View on GitHub
       link: https://github.com/littlekie/mimi-element-plus

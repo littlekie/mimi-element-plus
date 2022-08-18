@@ -1,38 +1,46 @@
 import { defineConfig } from 'vitepress'
-
-export default defineConfig( {
+const IS_DEV = process.env.NODE_ENV === 'development'
+export default defineConfig({
   lang: 'zh-CN',
   title: 'mini-element-plus',
   description: 'study element-plus',
-  base: '/mimi-element-plus/',
+  base: IS_DEV ? '/' : '/mimi-element-plus/',
   themeConfig: {
     logo: '/logo.jpg',
-    nav:nav(),
+    nav: nav(),
     sidebar: {
       '/zh-CN/guide/': sidebarGuide(),
-      '/zh-CN/component/': sidebarComponent(),
-    },
-  },
+      '/zh-CN/component/': sidebarComponent()
+    }
+  }
 })
 
-function nav() {
+function nav () {
   return [
-    { text: '指南', link: '/zh-CN/guide/introduce',activeMatch: '/zh-CN/guide/' },
-    { text: '组件', link: '/zh-CN/component/menu',activeMatch: '/zh-CN/component/' }
+    {
+      text: '指南',
+      link: '/zh-CN/guide/introduction',
+      activeMatch: '/zh-CN/guide/'
+    },
+    {
+      text: '组件',
+      link: '/zh-CN/component/menu',
+      activeMatch: '/zh-CN/component/'
+    }
   ]
 }
-function sidebarGuide() {
+function sidebarGuide () {
   return [
     {
       text: '指南',
       items: [
-        { text: '简介', link: '/zh-CN/guide/introduce' },
-        { text: '遇到的问题', link: '/zh-CN/guide/problem' },
+        { text: '简介', link: '/zh-CN/guide/introduction' },
+        { text: '遇到的问题', link: '/zh-CN/guide/problem' }
       ]
     }
   ]
 }
-function sidebarComponent(){
+function sidebarComponent () {
   return [
     {
       text: '基础组件',
