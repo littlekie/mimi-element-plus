@@ -39,6 +39,8 @@ function sidebarComponent(){
       `- name: Install PNPM`
        ` run: npm i -g pnpm`
 需要增加着两行，因为 github 上没有 pnpm 环境要手动安装
+
+是`commit_message` 不是 `commit-message`
 :::
 
 ```yaml
@@ -69,5 +71,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: docs/.vitepress/dist
-          commit-message: website deploy
+          commit_message: website deploy
 ```
