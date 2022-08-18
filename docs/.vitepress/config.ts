@@ -6,7 +6,7 @@ export default defineConfig( {
   lang: 'zh-CN',
   title: 'mini-element-plus',
   description: 'study element-plus',
-  base: '/',
+  base: '/mimi-element-plus/',
   themeConfig: {
     logo: '/logo.jpg',
     nav:nav(),
