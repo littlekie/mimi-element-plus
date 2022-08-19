@@ -15,8 +15,12 @@ function sidebarComponent(){
     }
   ]
 ```
+
+::: warn
 是因为 在link 前加了 `..` 所以不会有高亮
-可以直接以跟目录为准`link: '../zh-CN/component/menu' `
+可以直接以跟目录为准`link: '/zh-CN/component/menu' `
+建议使用绝对路径，相对路径可能会出现类似的问题
+:::
 
 修改后的配置
 ```ts
@@ -36,9 +40,11 @@ function sidebarComponent(){
 ## 搭建自动部署问题
 可以在跟目录创建 `.github/workflows/deploy.yml`
 ::: tip
-      `- name: Install PNPM`
-       ` run: npm i -g pnpm`
-需要增加着两行，因为 github 上没有 pnpm 环境要手动安装
+`- name: Install PNPM`
+` run: npm i -g pnpm`
+或者 使用以下方式
+`- name: Setup pnpm`
+`  uses: pnpm/action-setup@v2`
 
 是`commit_message` 不是 `commit-message`
 :::
@@ -59,8 +65,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: Install PNPM
-        run: npm i -g pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
       - run: pnpm install --frozen-lockfile
 
       - name: Build
