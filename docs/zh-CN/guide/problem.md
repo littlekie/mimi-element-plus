@@ -42,11 +42,16 @@ function sidebarComponent(){
 ::: tip
 `- name: Install PNPM`
 ` run: npm i -g pnpm`
-或者 使用以下方式
-`- name: Setup pnpm`
-`  uses: pnpm/action-setup@v2`
 
 是`commit_message` 不是 `commit-message`
+:::
+或者 使用以下方式
+
+::: tip
+`name: Setup pnpm`
+`uses: pnpm/action-setup@v2`
+但是要再项目packages.json中添加 pnpm 版本
+`"packageManager": "pnpm@7.9.0"`
 :::
 
 ```yaml
