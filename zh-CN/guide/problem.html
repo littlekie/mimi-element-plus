@@ -7,7 +7,7 @@
     <meta name="description" content="study element-plus">
     <link rel="stylesheet" href="/mimi-element-plus/assets/style.e1bfd790.css">
     <link rel="modulepreload" href="/mimi-element-plus/assets/app.3850c51d.js">
-    <link rel="modulepreload" href="/mimi-element-plus/assets/zh-CN_guide_problem.md.db503cb4.lean.js">
+    <link rel="modulepreload" href="/mimi-element-plus/assets/zh-CN_guide_problem.md.a23e6b82.lean.js">
     
     <script id="check-dark-light">(()=>{const e=localStorage.getItem("vitepress-theme-appearance"),a=window.matchMedia("(prefers-color-scheme: dark)").matches;(!e||e==="auto"?a:e==="dark")&&document.documentElement.classList.add("dark")})();</script>
   </head>
@@ -34,7 +34,7 @@
 <span class="line"><span style="color:#F07178;">      collapsible</span><span style="color:#89DDFF;">:</span><span style="color:#F07178;"> </span><span style="color:#FF9CAC;">true</span></span>
 <span class="line"><span style="color:#F07178;">    </span><span style="color:#89DDFF;">}</span></span>
 <span class="line"><span style="color:#F07178;">  ]</span></span>
-<span class="line"></span></code></pre></div><h2 id="搭建自动部署问题" tabindex="-1">搭建自动部署问题 <a class="header-anchor" href="#搭建自动部署问题" aria-hidden="true">#</a></h2><p>可以在跟目录创建 <code>.github/workflows/deploy.yml</code></p><div class="tip custom-block"><p class="custom-block-title">TIP</p><p><code>- name: Install PNPM</code><code> run: npm i -g pnpm</code> 或者 使用以下方式 <code>- name: Setup pnpm</code><code> uses: pnpm/action-setup@v2</code></p><p>是<code>commit_message</code> 不是 <code>commit-message</code></p></div><div class="language-yaml"><button class="copy"></button><span class="lang">yaml</span><pre><code><span class="line"><span style="color:#F07178;">name</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">Deploy</span></span>
+<span class="line"></span></code></pre></div><h2 id="搭建自动部署问题" tabindex="-1">搭建自动部署问题 <a class="header-anchor" href="#搭建自动部署问题" aria-hidden="true">#</a></h2><p>可以在跟目录创建 <code>.github/workflows/deploy.yml</code></p><div class="tip custom-block"><p class="custom-block-title">TIP</p><p><code>- name: Install PNPM</code><code> run: npm i -g pnpm</code></p><p>是<code>commit_message</code> 不是 <code>commit-message</code></p></div><p>或者 使用以下方式</p><div class="tip custom-block"><p class="custom-block-title">TIP</p><p><code>name: Setup pnpm</code><code>uses: pnpm/action-setup@v2</code> 但是要再项目packages.json中添加 pnpm 版本 <code>&quot;packageManager&quot;: &quot;pnpm@7.9.0&quot;</code></p></div><div class="language-yaml"><button class="copy"></button><span class="lang">yaml</span><pre><code><span class="line"><span style="color:#F07178;">name</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">Deploy</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#FF9CAC;">on</span><span style="color:#89DDFF;">:</span></span>
 <span class="line"><span style="color:#A6ACCD;">  </span><span style="color:#F07178;">push</span><span style="color:#89DDFF;">:</span></span>
@@ -63,7 +63,7 @@
 <span class="line"><span style="color:#A6ACCD;">          </span><span style="color:#F07178;">publish_dir</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">docs/.vitepress/dist</span></span>
 <span class="line"><span style="color:#A6ACCD;">          </span><span style="color:#F07178;">commit_message</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">website deploy</span></span>
 <span class="line"></span></code></pre></div><p><a href="https://vuepress.vuejs.org/" target="_blank" rel="noreferrer">deploy相关配置</a></p></div></div></main><!--[--><!--]--><footer class="VPDocFooter" data-v-3547ab9d data-v-36ee696f><!----><div class="prev-next" data-v-36ee696f><div class="pager" data-v-36ee696f><a class="pager-link prev" href="/mimi-element-plus/zh-CN/guide/introduction.html" data-v-36ee696f><span class="desc" data-v-36ee696f>Previous page</span><span class="title" data-v-36ee696f>简介</span></a></div><div class="has-prev pager" data-v-36ee696f><!----></div></div></footer><!--[--><!--]--></div></div></div></div></div><!----><!--[--><!--]--></div></div>
-    <script>__VP_HASH_MAP__ = JSON.parse("{\"examples_index.md\":\"64bd4767\",\"index.md\":\"70fe4596\",\"zh-cn_component_menu.md\":\"92fd6ab1\",\"zh-cn_component_modal.md\":\"68566e22\",\"zh-cn_guide_introduction.md\":\"baf69c12\",\"zh-cn_guide_problem.md\":\"db503cb4\",\"zh-cn_index.md\":\"3a9c2b64\"}")</script>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"examples_index.md\":\"64bd4767\",\"index.md\":\"70fe4596\",\"zh-cn_component_menu.md\":\"92fd6ab1\",\"zh-cn_component_modal.md\":\"68566e22\",\"zh-cn_guide_introduction.md\":\"baf69c12\",\"zh-cn_guide_problem.md\":\"a23e6b82\",\"zh-cn_index.md\":\"3a9c2b64\"}")</script>
     <script type="module" async src="/mimi-element-plus/assets/app.3850c51d.js"></script>
     
   </body>
