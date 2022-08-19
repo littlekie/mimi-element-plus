@@ -73,3 +73,5 @@ jobs:
           publish_dir: docs/.vitepress/dist
           commit_message: website deploy
 ```
+
+[deploy相关配置](https://vuepress.vuejs.org/)

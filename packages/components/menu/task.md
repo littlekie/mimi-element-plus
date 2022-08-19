@@ -24,7 +24,7 @@
 - [x] menu 组件要记录当前 sub-menu id 以及当前 expand item id
 - [x] 支持 BACK 事件关闭 sub-menu ，支持 beforeClose 事件 和 onclose 事件
 - [x] 鼠标点击有子菜单的，按back 后焦点要在父级的菜单上
-
+- [x] menuItem 需要支持超出滚动
 ## 进度
 
 ### 8.8
@@ -56,3 +56,5 @@
 - [x] menu 组件要支持关闭下级菜单，由sub-menu 告诉 menu
 - [x] menu 支持 header slot
 
+### 8.19
+- [x] menuItem 完成滚动相关逻辑

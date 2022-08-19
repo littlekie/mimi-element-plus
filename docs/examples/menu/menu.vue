@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
 import { Menu, MenuInstance } from '@mini-element-plus/components/menu'
-import { ref, onBeforeUnmount,onMounted } from 'vue'
 import { mebuData } from '@mini-element-plus/components/menu/__test__/mock'
 import '@mini-element-plus/components/menu/style/index.scss'
+import MenuItemNode from '@mini-element-plus/components/menu/src/menu-item-node';
 const reference = ref<MenuInstance>()
 const actions: any = {
   ArrowDown: 'DOWN',
@@ -18,32 +19,48 @@ onMounted(() => {
     reference.value?.KEYDOWN(actions[event.key])
   })
 })
+const isShow = ref(false)
+const focusItem = ref<MenuItemNode>()
+function changeFocusItem(item:MenuItemNode) {
+  focusItem.value = item
+}
 </script>
 
 <template>
-	<div class="menu_contain" id="menu_contain">
-		  <Menu :data="mebuData" ref="reference" :visible="true">
-    <template #header>
-      <div style="font-size:.3rem;color:red">
-        i am menu title
-      </div>
-    </template>
-  </Menu>
-	</div>
+  <div class="menu_contain" id="menu_contain">
+    <Menu
+      :data="mebuData"
+      @closeMenu="isShow = false"
+      @changeFocusItem="changeFocusItem"
+      ref="reference"
+      v-if="isShow"
+      :visible="isShow"
+    >
+      <template #header>
+        <div style="font-size:.3rem;color:red">
+          i am menu title
+        </div>
+      </template>
+    </Menu>
+  </div>
+  <div>
+    当前选中的菜单是：{{ focusItem?.cssName }}
+  </div>
+  <button style="background:#A3FE65" @click="isShow = !isShow">toggle menu</button>
 </template>
 
 <style>
 @import '@mini-element-plus/components/menu/style/index.scss';
 @import '../../../src/assets/eng.css';
-.menu_contain{
-	position: relative;
+.menu_contain {
+  position: relative;
 }
 .option-wrapper {
-    position: relative;;
+  position: relative;
 }
 </style>
-<style >
-html{
-	font-size: 40px;
+<style>
+html {
+  font-size: 40px;
 }
 </style>

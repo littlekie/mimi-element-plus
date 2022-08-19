@@ -2369,7 +2369,7 @@ content :"Speech";
 content :"Descriptive";
 }
 .Subtitles:before{
-content :"Subtitles";
+content :"Subtitles test loopSubtitles";
 }
 .Hearing_Impaired:before{
 content :"Hearing Impaired";
@@ -8098,7 +8098,7 @@ content :"Off";
 content :"On";
 }
 .OPTION_UAM:before{
-content :"Universal Access";
+content :"Universal AccessUniversal Access";
 }
 .OPTION_UAM_VISU_IMP:before{
 content :"Audio Description";
@@ -8122,7 +8122,7 @@ content :"Subtitles On";
 content :"Automatic";
 }
 .OPTION_SBTL:before{
-content :"Subtitles";
+content :"Subtitles OPTION_SBTL:before";
 }
 .OPTION_HBBTV_OFF:before{
 content :"Off";
