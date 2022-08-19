@@ -15,8 +15,13 @@
       :class="prefixIcon"
     ></div>
     <div class="wh-item-content">
-      <div v-if="node.cssName" class="text_marquee" :class="node.cssName"></div>
-      <span v-else class="wh-item_label wh-item-text">{{ node.text }}</span>
+      <TextMarquee
+        :fullScroll="false"
+        :delay="-1000"
+        :i18n-text="node.cssName"
+        :text="node.cssName ? '' : node.text"
+        :active="isFocus"
+      />
       <span>{{ node.nameExtra }}</span>
     </div>
     <!-- postfix_content -->
@@ -33,6 +38,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import MenuItemNode from './menu-item-node'
+import TextMarquee from '@mini-element-plus/components/textMarquee/index.vue'
 const ICON_TYPE_CLASSNAME: Record<number, string> = {
   0: 'icon-epg-DVB',
   1: 'icon-epg-TXT',

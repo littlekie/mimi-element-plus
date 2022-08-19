@@ -11,6 +11,7 @@
       :headerTitle="headerTitle"
       :sub-menu-data="menu"
       @openNextMenu="openNextMenu"
+      @changeFocusItem="changeFocusItem"
       @collapseSubMenu="collapseSubMenu"
       @berforeClose="berforeClose"
       @clickItemHandler="clickItemHandler"
@@ -23,8 +24,8 @@
 </template>
 
 <script setup lang="ts">
+import { computed, ref } from 'vue'
 import { useTemplateRefsList } from '@mini-element-plus/hooks'
-import { computed, ref, unref } from 'vue'
 import { SubMenuInstance } from '..'
 import MenuItemNode, { IMenuItemData } from './menu-item-node'
 import SubMenu from './sub-menu.vue'
@@ -80,7 +81,11 @@ function berforeClose () {
   console.log('berforeClose')
   emit('closeMenu')
 }
+function changeFocusItem (menuItem: MenuItemNode) {
+  emit('changeFocusItem', menuItem)
+}
 const emit = defineEmits<{
+  (e: 'changeFocusItem', menuItem: MenuItemNode): void
   (e: 'onEnter', menuItem: MenuItemNode): void
   (e: 'closeMenu'): void
 }>()

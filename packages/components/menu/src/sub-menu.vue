@@ -56,7 +56,7 @@ import { MenuItemProgressInstance } from '..'
 import { useTemplateRefsList } from '@mini-element-plus/hooks'
 import { isUndefined } from '@mini-element-plus/utils'
 
-interface ISubMenu {
+interface ISubMenuProps {
   id: number
   subMenuData: MenuItemNode[]
   currentFocusMenuIndex?: number
@@ -64,7 +64,7 @@ interface ISubMenu {
   cssHeaderTitle?: string
   headerTitle?: string
 }
-const props = withDefaults(defineProps<ISubMenu>(), {
+const props = withDefaults(defineProps<ISubMenuProps>(), {
   id: 0,
   currentFocusMenuIndex: 0,
   currentFocusItemIndex: 0
@@ -75,7 +75,7 @@ const lastMenuItemActiveIndex = ref(0)
 const upArrowShow = ref(false)
 const downArrowShow = ref(false)
 const activeMenu = computed(() => props.currentFocusMenuIndex === props.id)
-if (activeMenu) {
+if (activeMenu.value) {
   setCurrentFocusItemIndex(props.currentFocusItemIndex)
 }
 const menuItemActiveItem = computed(
@@ -111,7 +111,7 @@ const emit = defineEmits<{
   (e: 'volumeBarAdjust', menuItem: MenuItemNode): void
   (e: 'openNextMenu', menuItem: MenuItemNode): void
   (e: 'update:currentFocusItemIndex', index: number): void
-  (e: 'changeCurrentFocusItemIndex', index: number): void
+  (e: 'changeFocusItem', menuItem: MenuItemNode): void
 }>()
 
 function clickItemHandler (menuItem: MenuItemNode, index: number) {
@@ -120,7 +120,6 @@ function clickItemHandler (menuItem: MenuItemNode, index: number) {
   }
   if (!menuItem.isLeaf) {
     setCurrentFocusItemIndex(index)
-    emit('clickItemHandler', menuItem)
     return emit('openNextMenu', menuItem)
   }
   if (menuItem.nodeType === NodeType.IS_RADIO && !menuItem.isChecked) {
@@ -148,11 +147,12 @@ function ENTER () {
     emit('openNextMenu', menuItem)
   }
 }
-function searchLastNodeNoDisabledIndex () {
+function searchLastNodeNoDisabledIndex() {
+  const {subMenuData} = props
   let nextIndex = menuItemActiveIndex.value
-  for (let index = props.subMenuData.length - 1; index >= 0; index--) {
+  for (let index = subMenuData.length - 1; index >= 0; index--) {
     if (
-      !props.subMenuData[index].isDisabled &&
+      !subMenuData[index].isDisabled &&
       index < menuItemActiveIndex.value
     ) {
       nextIndex = index
@@ -161,11 +161,12 @@ function searchLastNodeNoDisabledIndex () {
   }
   return nextIndex
 }
-function searchNextNodeNoDisabledIndex () {
+function searchNextNodeNoDisabledIndex() {
+  const {subMenuData} = props
   let nextIndex = menuItemActiveIndex.value
-  for (let index = 0; index < props.subMenuData.length; index++) {
+  for (let index = 0; index < subMenuData.length; index++) {
     if (
-      !props.subMenuData[index].isDisabled &&
+      !subMenuData[index].isDisabled &&
       index > menuItemActiveIndex.value
     ) {
       nextIndex = index
@@ -214,7 +215,7 @@ function setCurrentFocusItemIndex (index: number) {
   lastMenuItemActiveIndex.value = menuItemActiveIndex.value
   menuItemActiveIndex.value = index
   emit('update:currentFocusItemIndex', index)
-  emit('changeCurrentFocusItemIndex', index)
+  emit('changeFocusItem', props.subMenuData[index])
 }
 const Action: Record<string, () => void> = {
   DOWN,
