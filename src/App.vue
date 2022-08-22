@@ -2,6 +2,7 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import HelloWorld from './components/HelloWorld.vue'
+import macrosDemo from './components/macros-demo.vue'
 import { MenuItemProgress } from '@mini-element-plus/components/menu'
 import { ref } from 'vue';
 const value = ref(0)
@@ -20,6 +21,7 @@ window.setvalue = ()=> value.value+=1
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+  <macrosDemo :msg='value+""'/>
   <MenuItemProgress ref="reference" :min-size="0" :max-size="10" v-model="value"></MenuItemProgress>
 </template>
 

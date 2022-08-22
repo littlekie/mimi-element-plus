@@ -4,7 +4,12 @@ import VueJsx from '@vitejs/plugin-vue-jsx'
 import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), VueJsx()],
+  plugins: [
+    vue({
+      reactivityTransform: true
+    }),
+    VueJsx()
+  ],
   resolve: {
     alias: {
       // 这里就是需要配置resolve里的别名
