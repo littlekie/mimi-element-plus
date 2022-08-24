@@ -1,17 +1,22 @@
 import { defineConfig } from 'vitepress'
-const IS_DEV = process.env.NODE_ENV === 'development'
+const IS_PROD = process.env.NODE_ENV === 'production'
+const baseUrl = IS_PROD ? '/mimi-element-plus/' : '/'
 export default defineConfig({
   lang: 'zh-CN',
   title: 'mini-element-plus',
   description: 'study element-plus',
-  base: IS_DEV ? '/' : '/mimi-element-plus/',
+  base: baseUrl,
   themeConfig: {
     logo: '/logo.jpg',
     nav: nav(),
     sidebar: {
       '/zh-CN/guide/': sidebarGuide(),
       '/zh-CN/component/': sidebarComponent()
-    }
+    },
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/littlekie/mimi-element-plus' }
+    ],
+
   }
 })
 
