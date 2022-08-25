@@ -1,22 +1,3 @@
----
-title: Modal
-lang: en-US
----
-
-# Modal
-
-Modal
-## 基础用法
-
-<dialogModal />
-
-<script setup>
-import dialogModal from '../../examples/dialog/show.vue'
-</script>
-
-
-### 源码使用方式
-```vue
 <template>
   <div class="dialogWrapper">
     <div
@@ -86,4 +67,3 @@ const handleKeydown = (e: Event) => {
   }
 }
 </style>
-```
