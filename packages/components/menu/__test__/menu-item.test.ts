@@ -1,6 +1,6 @@
-import {describe, expect, test } from 'vitest'
-import MenuItemNode, { NodeType } from '../src/menu-item-node'
+import { describe, expect, test } from 'vitest'
 import { mount, VueWrapper } from '@vue/test-utils'
+import MenuItemNode, { NodeType } from '../src/menu-item-node'
 import MenuItem from '../src/menu-item.vue'
 import { MenuItemInstance } from '..'
 const menuItemData = {

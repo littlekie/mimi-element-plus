@@ -17,18 +17,19 @@
       @clickItemHandler="clickItemHandler"
     >
       <template v-if="$slots.header" #header>
-        <slot name="header" />
+        <slot name="header"></slot>
       </template>
     </SubMenu>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useTemplateRefsList } from '@mini-element-plus/hooks'
 import { SubMenuInstance } from '..'
 import MenuItemNode, { IMenuItemData } from './menu-item-node'
 import SubMenu from './sub-menu.vue'
+import { isUndefined } from '@mini-element-plus/utils'
 const props = defineProps<{
   data: IMenuItemData[]
   cssHeaderTitle?: string
@@ -93,20 +94,36 @@ function clickItemHandler (menuItem: MenuItemNode) {
   emit('onEnter', menuItem)
 }
 
-function updateMenuList () {
+function initMenuList () {
   menuList.value = [props.data.map(item => new MenuItemNode(item))]
 }
 function KEYDOWN (name: string) {
   subMenuRefList.value[currentMenuIndex.value].KEYDOWN(name)
 }
 function initData () {
-  updateMenuList()
+  initMenuList()
   if (menuList.value[0]) {
     currentItemIndex.value = menuList.value[0].findIndex(item => item.isChecked)
   }
   currentItemIndex.value =
     currentItemIndex.value > -1 ? currentItemIndex.value : 0
 }
+function updateMenuList () {
+  const newMenu = [props.data.map(item => new MenuItemNode(item))]
+  const oldActiveMenuItemRecord = activeMenuItemRecord.value
+  activeMenuItemRecord.value[0]
+  menuList.value.forEach((item, menuId) => {
+    const oldMenuItemId = oldActiveMenuItemRecord[menuId - 1]
+    if (isUndefined(oldMenuItemId)) {
+      menuList.value[0] = newMenu[0]
+    } else {
+      menuList.value[menuId] =
+        menuList.value[menuId - 1][oldMenuItemId].children
+    }
+  })
+}
+watch(() => props.data, updateMenuList)
+
 initData()
 defineExpose({
   activeMenuItemRecord,
@@ -120,4 +137,6 @@ defineExpose({
 })
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+@import '../style/index.scss';
+</style>

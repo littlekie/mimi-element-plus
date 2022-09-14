@@ -31,7 +31,7 @@ export default defineComponent({
     },
     isFocus:{
       type: Boolean,
-      default: 0
+      default: true
     }
   },
   emits: ['update:modelValue', 'onChange'],
@@ -68,4 +68,6 @@ export default defineComponent({
 })
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+  @import '../style/index.scss';
+</style>

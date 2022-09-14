@@ -5,6 +5,7 @@ const progressDefaultNumber: Record<string, number[]> = {
 interface IMenuItemNode {
   parent: null | IMenuItemNode
   cssName: string
+  label: string
   data: IMenuItemData[]
   name: string
   value: number
@@ -43,6 +44,7 @@ export default class MenuItemNode implements IMenuItemNode {
   parent: null | MenuItemNode
   data: IMenuItemData[] = []
   cssName = ''
+  label = ''
   name = ''
   value = 0
   progressValue = 0
@@ -81,6 +83,7 @@ export default class MenuItemNode implements IMenuItemNode {
     this.value = index
     this.name = name || ''
     this.cssName = mlang_key || ''
+    this.label = this.cssName
     this.isChecked = Boolean(selected)
     this.iconType = iconType || -1
     this.nodeType = type
@@ -96,7 +99,10 @@ export default class MenuItemNode implements IMenuItemNode {
   initChildren () {
     const childrenData: IMenuItemData[] = this.nodeData.data || []
     this.hasChildren = Array.isArray(childrenData) && childrenData.length > 0
-    this.children = childrenData.map(child => new MenuItemNode(child, this))
+    this.children = childrenData.map((child, index) => {
+      child.index = index
+      return new MenuItemNode(child, this)
+    })
   }
 
   get isDisabled (): boolean {

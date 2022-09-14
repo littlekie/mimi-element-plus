@@ -4,9 +4,7 @@
       <slot name="header" v-if="id === 0">
         <template v-if="!isUndefined(cssHeaderTitle || headerTitle)">
           <div class="wh-sc-header-title">
-            <span class="wh-st-text" :class="cssHeaderTitle"
-              >{{ headerTitle }}}</span
-            >
+            <span class="wh-st-text" :class="cssHeaderTitle">{{ headerTitle }}</span>
           </div>
           <div class="underline"></div>
         </template>
@@ -36,8 +34,7 @@
             :isActive="!activeMenu && menuItemActiveIndex === index"
             :key="index + item.name"
             @click.stop="clickItemHandler(item, index)"
-          >
-          </menu-item>
+          />
         </template>
       </div>
     </div>
@@ -83,19 +80,11 @@ const menuItemActiveItem = computed(
 )
 const menuItemProgressRef = useTemplateRefsList<MenuItemProgressInstance>()
 watch(
-  () => props.currentFocusItemIndex,
-  newValue => {
-    if (activeMenu.value) {
-      setCurrentFocusItemIndex(newValue)
-    }
-  }
-)
-watch(
   () => props.subMenuData,
   newValue => {
     if (newValue?.length && activeMenu.value) {
       const selectedIndex = newValue.findIndex(item => item.isChecked)
-      menuItemActiveIndex.value = selectedIndex > -1 ? selectedIndex : 0
+      setCurrentFocusItemIndex(selectedIndex > -1 ? selectedIndex : 0)
     }
   },
   {
@@ -104,8 +93,7 @@ watch(
   }
 )
 
-const emit = defineEmits<{
-  (e: 'clickItemHandler', menuItem: MenuItemNode): void
+const emit = defineEmits<{(e: 'clickItemHandler', menuItem: MenuItemNode): void
   (e: 'collapseSubMenu', menuItem: MenuItemNode): void
   (e: 'berforeClose'): void
   (e: 'volumeBarAdjust', menuItem: MenuItemNode): void
@@ -114,7 +102,7 @@ const emit = defineEmits<{
   (e: 'changeFocusItem', menuItem: MenuItemNode): void
 }>()
 
-function clickItemHandler (menuItem: MenuItemNode, index: number) {
+function clickItemHandler(menuItem: MenuItemNode, index: number) {
   if (menuItem.isDisabled) {
     return
   }
@@ -127,7 +115,7 @@ function clickItemHandler (menuItem: MenuItemNode, index: number) {
     menuItem.isChecked = true
   }
   if (!menuItem.parent && menuItem.isLeaf) {
-     emit('collapseSubMenu',menuItem)
+    emit('collapseSubMenu', menuItem)
   }
   setCurrentFocusItemIndex(index)
   emit('clickItemHandler', menuItem)
@@ -148,7 +136,7 @@ function ENTER () {
   }
 }
 function searchLastNodeNoDisabledIndex() {
-  const {subMenuData} = props
+  const { subMenuData } = props
   let nextIndex = menuItemActiveIndex.value
   for (let index = subMenuData.length - 1; index >= 0; index--) {
     if (
@@ -162,7 +150,7 @@ function searchLastNodeNoDisabledIndex() {
   return nextIndex
 }
 function searchNextNodeNoDisabledIndex() {
-  const {subMenuData} = props
+  const { subMenuData } = props
   let nextIndex = menuItemActiveIndex.value
   for (let index = 0; index < subMenuData.length; index++) {
     if (

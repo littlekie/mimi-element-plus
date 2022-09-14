@@ -71,7 +71,7 @@ describe('sub-menu', () => {
       currentFocusItemIndex: 0
     })
     expect(vm.activeMenu).toBe(false)
-    expect(vm.menuItemActiveIndex).toBe(1)
+    expect(vm.menuItemActiveIndex).toBe(0)
   })
 
   test('test sub-menu menu-item click and click item disbaled', async () => {
