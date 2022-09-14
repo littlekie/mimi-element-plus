@@ -15,6 +15,7 @@
 </template>
 
 <script setup lang="ts">
+import { Ref } from 'vue';
 import { $ref,$computed } from 'vue/macros'
 const { msg:newMsg } = defineProps<{
 	msg: string

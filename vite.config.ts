@@ -6,7 +6,7 @@ import path from 'path'
 export default defineConfig({
   plugins: [
     vue({
-      reactivityTransform: true
+      reactivityTransform: true // 支持sfc 语法
     }),
     VueJsx()
   ],
@@ -22,6 +22,7 @@ export default defineConfig({
     environment: 'jsdom',
     transformMode: {
       web: [/\.[jt]sx$/]
-    }
+    },
+    // globals: true //  设置 global: true 这一项以后无需 import vitest包相关的函数  就能在文件中使用。
   }
 })
