@@ -45,13 +45,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, ref, toRefs, watch } from 'vue'
 import MenuItemNode, { NodeType } from './menu-item-node'
 import MenuItem from './menu-item.vue'
 import MenuItemProgress from './menu-item-progress.vue'
 import { MenuItemProgressInstance } from '..'
 import { useTemplateRefsList } from '@mini-element-plus/hooks'
 import { isUndefined } from '@mini-element-plus/utils'
+import { useSubMenArrow } from './sub-menu-hooks'
 
 interface ISubMenuProps {
   id: number
@@ -66,11 +67,23 @@ const props = withDefaults(defineProps<ISubMenuProps>(), {
   currentFocusMenuIndex: 0,
   currentFocusItemIndex: 0
 })
-
 const menuItemActiveIndex = ref(0)
 const lastMenuItemActiveIndex = ref(0)
-const upArrowShow = ref(false)
-const downArrowShow = ref(false)
+const { subMenuData } = toRefs(props)
+const {
+  downArrowShow,
+  upArrowShow,
+  showDownIcon,
+  handlerDownArrow,
+  handlerUpArrow
+} = useSubMenArrow({
+  id: props.id,
+  menuItemActiveIndex,
+  subMenuData
+})
+if (subMenuData.value.length > 8) {
+  showDownIcon()
+}
 const activeMenu = computed(() => props.currentFocusMenuIndex === props.id)
 if (activeMenu.value) {
   setCurrentFocusItemIndex(props.currentFocusItemIndex)
@@ -169,6 +182,7 @@ function UP () {
   } else {
     setCurrentFocusItemIndex(searchLastNodeNoDisabledIndex())
   }
+  handlerUpArrow()
 }
 function DOWN () {
   if (menuItemActiveIndex.value === props.subMenuData.length - 1) {
@@ -176,6 +190,7 @@ function DOWN () {
   } else {
     setCurrentFocusItemIndex(searchNextNodeNoDisabledIndex())
   }
+  handlerDownArrow()
 }
 function RIGHT () {
   menuItemProgressRef.value[0]?.RIGHT()
