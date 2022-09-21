@@ -11,7 +11,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/littlekie/mimi-element-plus.git"
+    "url": "https://github.com/littlekie/mimi-element-plus.git"
   },
   "bugs": {
     "url": "https://github.com/littlekie/mimi-element-plus/issues"
