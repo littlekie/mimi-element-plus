@@ -25,11 +25,11 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
-import { useTemplateRefsList } from '@mini-element-plus/hooks'
+import { useTemplateRefsList } from '@littlekie/hooks'
 import { SubMenuInstance } from '..'
 import MenuItemNode, { IMenuItemData } from './menu-item-node'
 import SubMenu from './sub-menu.vue'
-import { isUndefined } from '@mini-element-plus/utils'
+import { isUndefined } from '@littlekie/utils'
 const props = defineProps<{
   data: IMenuItemData[]
   cssHeaderTitle?: string

@@ -1,4 +1,4 @@
-import { useNamespace } from '@mini-element-plus/hooks'
+import { useNamespace } from '@littlekie/hooks'
 import { CSSProperties, ComputedRef, InjectionKey, PropType, Ref } from 'vue'
 export type DialogContext = {
   style: ComputedRef<CSSProperties>

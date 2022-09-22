@@ -4,7 +4,7 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"],
-      "@mini-element-plus/*": ["package/*"]
+      "@littlekie/*": ["package/*"]
     },
     "useDefineForClassFields": true,
     "module": "ESNext",

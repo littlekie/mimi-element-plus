@@ -50,8 +50,8 @@ import MenuItemNode, { NodeType } from './menu-item-node'
 import MenuItem from './menu-item.vue'
 import MenuItemProgress from './menu-item-progress.vue'
 import { MenuItemProgressInstance } from '..'
-import { useTemplateRefsList } from '@mini-element-plus/hooks'
-import { isUndefined } from '@mini-element-plus/utils'
+import { useTemplateRefsList } from '@littlekie/hooks'
+import { isUndefined } from '@littlekie/utils'
 import { useSubMenArrow } from './sub-menu-hooks'
 
 interface ISubMenuProps {

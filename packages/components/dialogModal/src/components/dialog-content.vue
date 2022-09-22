@@ -29,8 +29,8 @@ defineEmits(dialogContentEmits)
 const { style, ns } = inject(dialogInjectionKey)!
 </script>
 <style lang="scss" scoped>
-@import '@mini-element-plus/utils/bem/mixins.scss';
-@import '@mini-element-plus/utils/bem/config.scss';
+@import '@littlekie/utils/bem/mixins.scss';
+@import '@littlekie/utils/bem/config.scss';
 
 @include b(dialogModal) {
   position: relative;

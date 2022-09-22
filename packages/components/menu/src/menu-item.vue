@@ -38,7 +38,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import MenuItemNode from './menu-item-node'
-import TextMarquee from '@mini-element-plus/components/textMarquee/index.vue'
+import TextMarquee from '@littlekie/components/textMarquee/index.vue'
 const ICON_TYPE_CLASSNAME: Record<number, string> = {
   0: 'icon-epg-DVB',
   1: 'icon-epg-TXT',

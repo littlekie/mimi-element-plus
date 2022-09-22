@@ -1,5 +1,5 @@
 {
-  "name": "@mini-element-plus/docs",
+  "name": "@littlekie/docs",
   "private": true,
   "version": "0.0.1",
   "description": "",
@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@mini-element-plus/components": "workspace:*",
+    "@littlekie/components": "workspace:*",
     "@vue/shared": "^3.2.37",
     "@vueuse/core": "^8.7.5",
     "axios": "^0.27.2",

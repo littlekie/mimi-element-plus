@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-import { Menu, MenuInstance } from '@mini-element-plus/components/menu'
-import { mebuData } from '@mini-element-plus/components/menu/__test__/mock'
-import '@mini-element-plus/components/menu/style/index.scss'
-import MenuItemNode from '@mini-element-plus/components/menu/src/menu-item-node'
+import { Menu, MenuInstance } from '@littlekie/components/menu'
+import { mebuData } from '@littlekie/components/menu/__test__/mock'
+import '@littlekie/components/menu/style/index.scss'
+import MenuItemNode from '@littlekie/components/menu/src/menu-item-node'
 const reference = ref<MenuInstance>()
 const actions: any = {
   ArrowDown: 'DOWN',
@@ -58,7 +58,7 @@ function changeFocusItem (item: MenuItemNode) {
 </template>
 
 <style>
-@import '@mini-element-plus/components/menu/style/index.scss';
+@import '@littlekie/components/menu/style/index.scss';
 @import '../../../src/assets/eng.css';
 .menu_contain {
   position: relative;

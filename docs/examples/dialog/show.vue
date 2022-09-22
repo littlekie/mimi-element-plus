@@ -12,7 +12,7 @@
 
 <script lang="ts" setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-import { dialogModal } from '@mini-element-plus/components/dialogModal'
+import { dialogModal } from '@littlekie/components/dialogModal'
 const dialogModalShow = ref(false)
 const dialogModalRef = ref()
 const handleClose = (done: () => void) => {

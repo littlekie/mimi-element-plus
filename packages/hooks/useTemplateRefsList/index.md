@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import { useTemplateRefsList } from '@mini-element-plus/hooks'
+import { useTemplateRefsList } from '@littlekie/hooks'
 
 const refsList = useTemplateRefsList<HTMLDivElement>()
 onUpdated(() => {

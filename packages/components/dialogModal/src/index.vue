@@ -49,7 +49,7 @@ import dialogContent from './components/dialog-content.vue'
 import dialogFooter from './components/dialog-footer.vue'
 import { useDialog } from './hooks/useDialog'
 import { dialogInjectionKey } from './tokens'
-import { useNamespace } from '@mini-element-plus/hooks'
+import { useNamespace } from '@littlekie/hooks'
 import { dialogProps } from './types/dialog-type'
 
 const props = defineProps(dialogProps)

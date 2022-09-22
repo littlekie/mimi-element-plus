@@ -18,9 +18,9 @@
     "commit-msg": "node scripts/verifyCommit.js"
   },
   "dependencies": {
-    "@mini-element-plus/components": "workspace:*",
-    "@mini-element-plus/hooks": "workspace:*",
-    "@mini-element-plus/utils": "workspace:*",
+    "@littlekie/components": "workspace:*",
+    "@littlekie/hooks": "workspace:*",
+    "@littlekie/utils": "workspace:*",
     "vue": "^3.2.37"
   },
   "devDependencies": {

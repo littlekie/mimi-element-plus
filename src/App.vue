@@ -4,7 +4,7 @@
 import HelloWorld from './components/HelloWorld.vue'
 import macrosDemo from './components/macros-demo.vue'
 import TsxDemo from './components/demo'
-import { MenuItemProgress } from '@mini-element-plus/components/menu'
+import { MenuItemProgress } from '@littlekie/components/menu'
 import { ref } from 'vue';
 const value = ref(0)
 const reference = ref()

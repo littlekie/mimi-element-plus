@@ -19,9 +19,9 @@ import Menu from '../../examples/menu/menu.vue'
 ```vue
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { Menu, MenuInstance } from '@mini-element-plus/components/menu'
-import { mebuData } from '@mini-element-plus/components/menu/__test__/mock'
-import '@mini-element-plus/components/menu/style/index.scss'
+import { Menu, MenuInstance } from '@littlekie/components/menu'
+import { mebuData } from '@littlekie/components/menu/__test__/mock'
+import '@littlekie/components/menu/style/index.scss'
 const reference = ref<MenuInstance>()
 const actions: any = {
   ArrowDown: 'DOWN',
@@ -54,7 +54,7 @@ const isShow = ref(false)
 </template>
 
 <style>
-@import '@mini-element-plus/components/menu/style/index.scss';
+@import '@littlekie/components/menu/style/index.scss';
 @import '../../../src/assets/eng.css';
 .menu_contain {
   position: relative;

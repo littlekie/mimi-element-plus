@@ -14,7 +14,7 @@ export default defineConfig({
     alias: {
       // 这里就是需要配置resolve里的别名
       '@': path.join(__dirname, './src'),
-      '@mini-element-plus': path.join(__dirname, './packages')
+      '@littlekie': path.join(__dirname, './packages')
     }
   },
   test: {

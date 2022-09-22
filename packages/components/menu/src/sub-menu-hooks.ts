@@ -1,4 +1,4 @@
-import { Ref, ref } from 'vue'
+import { Ref, ref, nextTick } from 'vue'
 import MenuItemNode from './menu-item-node'
 
 interface IUseSubMenArrow{
@@ -52,16 +52,16 @@ export function useSubMenArrow(config: IUseSubMenArrow) {
     }
   }
 
-  function handlerDownArrow () {
+  async function handlerDownArrow () {
     const nodesCount = subMenuData.value.length
     const scrollHigh = (nodesCount - maxMenuItemCount) * 105 * -1
     const currentItemIndex = menuItemActiveIndex.value
 
     if (currentItemIndex >= maxMenuItemCount - 1) {
-      if (getCurrentMenuContentListTop() <= scrollHigh) {
+      if (await getCurrentMenuContentListTop() <= scrollHigh) {
         return
       }
-      setCurrentMenuContentList(getCurrentMenuContentListTop() - 105)
+      setCurrentMenuContentList(await getCurrentMenuContentListTop() - 105)
       showUpIcon()
     } else if (currentItemIndex === 0) {
       setCurrentMenuContentList(0)
@@ -73,18 +73,20 @@ export function useSubMenArrow(config: IUseSubMenArrow) {
       hideDownIcon()
     }
   }
-  function getCurrentMenuContentListTop () {
+  async function getCurrentMenuContentListTop() {
     const currentMenuContentList = document.querySelectorAll(
       '.wh-sidebar .wh-sc-content-list'
     )[id] as HTMLElement
-    const listTop = currentMenuContentList.style.top || '0px'
+    const listTop = currentMenuContentList?.style?.top || '0px'
     return Math.ceil(Number(listTop.replace('px', '')))
   }
-  function setCurrentMenuContentList (top: number) {
+  async function setCurrentMenuContentList(top: number) {
     const currentMenuContentList = document.querySelectorAll(
       '.wh-sidebar .wh-sc-content-list'
     )[id] as HTMLElement
-    currentMenuContentList.style.top = top + 'px'
+    if (currentMenuContentList?.style) {
+      currentMenuContentList.style.top = top + 'px'
+    }
   }
 
   return {
