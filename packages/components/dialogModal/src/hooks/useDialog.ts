@@ -1,12 +1,12 @@
-import { CSSProperties, SetupContext } from 'vue'
+import type { CSSProperties, SetupContext } from 'vue'
 import { computed, getCurrentInstance, onMounted, ref, watch } from 'vue'
-import { DialogEmits, DialogProps } from '../types/dialog-type'
+import type { DialogEmits, DialogProps } from '../types/dialog-type'
 export const useDialog = (props: DialogProps) => {
   const instance = getCurrentInstance()!
   const emit = instance.emit as SetupContext<DialogEmits>['emit']
   const visible = ref(false)
-  function handleClose () {
-    function hide (shouldCancel?: boolean) {
+  function handleClose() {
+    function hide(shouldCancel?: boolean) {
       if (shouldCancel) {
         return
       }
@@ -20,17 +20,17 @@ export const useDialog = (props: DialogProps) => {
     }
   }
 
-  function onModalClick () {
+  function onModalClick() {
     if (props.onModalClickClose) {
       handleClose()
     }
   }
 
-  function open () {
+  function open() {
     visible.value = true
   }
 
-  function close () {
+  function close() {
     visible.value = false
   }
 

@@ -9,10 +9,10 @@
       >
     </header>
     <div :class="ns.e('body')">
-      <slot></slot>
+      <slot />
     </div>
     <footer v-if="$slots.footer" :class="ns.e('footer')">
-      <slot name="footer"></slot>
+      <slot name="footer" />
     </footer>
   </div>
 </template>

@@ -7,17 +7,17 @@
       :ref="subMenuRefList.set"
       v-model:currentFocusItemIndex="currentItemIndex"
       v-model:currentFocusMenuIndex="currentMenuIndex"
-      :cssHeaderTitle="cssHeaderTitle"
-      :headerTitle="headerTitle"
+      :css-header-title="cssHeaderTitle"
+      :header-title="headerTitle"
       :sub-menu-data="menu"
-      @openNextMenu="openNextMenu"
-      @changeFocusItem="changeFocusItem"
-      @collapseSubMenu="collapseSubMenu"
-      @berforeClose="berforeClose"
-      @clickItemHandler="clickItemHandler"
+      @open-next-menu="openNextMenu"
+      @change-focus-item="changeFocusItem"
+      @collapse-sub-menu="collapseSubMenu"
+      @berfore-close="berforeClose"
+      @click-item-handler="clickItemHandler"
     >
       <template v-if="$slots.header" #header>
-        <slot name="header"></slot>
+        <slot name="header" />
       </template>
     </SubMenu>
   </div>
@@ -26,8 +26,9 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { useTemplateRefsList } from '@littlekie/hooks'
-import { SubMenuInstance } from '..'
-import MenuItemNode, { IMenuItemData } from './menu-item-node'
+import type { SubMenuInstance } from '..'
+import type { IMenuItemData } from './menu-item-node'
+import MenuItemNode from './menu-item-node'
 import SubMenu from './sub-menu.vue'
 import { isUndefined } from '@littlekie/utils'
 const props = defineProps<{
@@ -46,19 +47,19 @@ const currentMenuItemData = computed(() => {
 const activeMenuItemRecord = computed(() => {
   return getActiveData(currentMenuItemData.value)
 })
-let activeMenuItemData = ref<Record<number, number>>({})
-function getActiveData (menuItem: MenuItemNode) {
+const activeMenuItemData = ref<Record<number, number>>({})
+function getActiveData(menuItem: MenuItemNode) {
   activeMenuItemData.value = {}
   getParentData(menuItem)
   return activeMenuItemData.value
 }
-function getParentData (menuItem: MenuItemNode) {
+function getParentData(menuItem: MenuItemNode) {
   if (menuItem.parent) {
     activeMenuItemData.value[menuItem.parent.level - 1] = menuItem.parent.value
     getParentData(menuItem.parent)
   }
 }
-function openNextMenu (menuItem: MenuItemNode) {
+function openNextMenu(menuItem: MenuItemNode) {
   menuList.value = menuList.value.slice(0, menuItem.level)
   menuList.value.push(menuItem.children)
   let newCurrentItemIndex = 0
@@ -66,7 +67,7 @@ function openNextMenu (menuItem: MenuItemNode) {
   currentItemIndex.value = newCurrentItemIndex > -1 ? newCurrentItemIndex : 0
   currentMenuIndex.value = menuItem.level
 }
-function collapseSubMenu (menuItem: MenuItemNode) {
+function collapseSubMenu(menuItem: MenuItemNode) {
   if (menuItem.parent) {
     currentMenuIndex.value -= 1
     currentItemIndex.value = menuItem.parent.value
@@ -77,12 +78,12 @@ function collapseSubMenu (menuItem: MenuItemNode) {
     currentItemIndex.value = menuItem.value
   }
 }
-function berforeClose () {
+function berforeClose() {
   // TODO berforeClose
   console.log('berforeClose')
   emit('closeMenu')
 }
-function changeFocusItem (menuItem: MenuItemNode) {
+function changeFocusItem(menuItem: MenuItemNode) {
   emit('changeFocusItem', menuItem)
 }
 const emit = defineEmits<{
@@ -90,17 +91,17 @@ const emit = defineEmits<{
   (e: 'onEnter', menuItem: MenuItemNode): void
   (e: 'closeMenu'): void
 }>()
-function clickItemHandler (menuItem: MenuItemNode) {
+function clickItemHandler(menuItem: MenuItemNode) {
   emit('onEnter', menuItem)
 }
 
-function initMenuList () {
+function initMenuList() {
   menuList.value = [props.data.map(item => new MenuItemNode(item))]
 }
-function KEYDOWN (name: string) {
+function KEYDOWN(name: string) {
   subMenuRefList.value[currentMenuIndex.value].KEYDOWN(name)
 }
-function initData () {
+function initData() {
   initMenuList()
   if (menuList.value[0]) {
     currentItemIndex.value = menuList.value[0].findIndex(item => item.isChecked)
@@ -108,7 +109,7 @@ function initData () {
   currentItemIndex.value =
     currentItemIndex.value > -1 ? currentItemIndex.value : 0
 }
-function updateMenuList () {
+function updateMenuList() {
   const newMenu = [props.data.map(item => new MenuItemNode(item))]
   const oldActiveMenuItemRecord = activeMenuItemRecord.value
   activeMenuItemRecord.value[0]

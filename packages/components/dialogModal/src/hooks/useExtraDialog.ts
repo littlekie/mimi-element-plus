@@ -1,16 +1,9 @@
-import {
-  ComponentPublicInstance,
-  computed,
-  getCurrentInstance,
-  inject,
-  ref,
-  SetupContext,
-  watch
-} from 'vue'
+import type { SetupContext } from 'vue'
+import { computed, getCurrentInstance, inject, ref, watch } from 'vue'
 import { BUTTON_TYPE } from './useDialog'
-import {
-  ExtraDialogPropsType,
-  ExtraDialogEmitsType
+import type {
+  ExtraDialogEmitsType,
+  ExtraDialogPropsType
 } from '../types/dialog-extra-type'
 import { dialogInjectionKey } from '../tokens'
 export const useExtraDialog = (props: ExtraDialogPropsType) => {

@@ -8,20 +8,20 @@
       @click="onModalClick"
     >
       <dialog-content
+        ref="dialogContentRef"
         :custom-class="customClass"
         :center="center"
         :show-close="showClose"
         :title="title"
         @close="handleClose"
-        ref="dialogContentRef"
       >
         <template #header>
-          <slot v-if="!$slots.title" name="header" :close="handleClose"></slot>
-          <slot v-else name="title"></slot>
+          <slot v-if="!$slots.title" name="header" :close="handleClose" />
+          <slot v-else name="title" />
         </template>
-        <slot></slot>
+        <slot />
         <template v-if="$slots.footer" #footer>
-          <slot name="footer"></slot>
+          <slot name="footer" />
         </template>
         <template v-else #footer>
           <dialog-footer
@@ -35,8 +35,7 @@
             @close="handleClose"
             @cancel="$emit('cancel')"
             @confirm="$emit('confirm')"
-          >
-          </dialog-footer>
+          />
         </template>
       </dialog-content>
     </div>
@@ -61,9 +60,9 @@ provide(dialogInjectionKey, {
   visible
 })
 const dialogContentRef = ref()
-const defaultDialogFooter = ref();
+const defaultDialogFooter = ref()
 const KEYDOWN = (e: Event) => {
-  defaultDialogFooter.value.KEYDOWN(e);
+  defaultDialogFooter.value.KEYDOWN(e)
 }
 defineExpose({
   dialogContentRef,

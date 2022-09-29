@@ -15,12 +15,11 @@ export default defineConfig({
     },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/littlekie/mimi-element-plus' }
-    ],
-
+    ]
   }
 })
 
-function nav () {
+function nav() {
   return [
     {
       text: '指南',
@@ -34,7 +33,7 @@ function nav () {
     }
   ]
 }
-function sidebarGuide () {
+function sidebarGuide() {
   return [
     {
       text: '指南',
@@ -45,7 +44,7 @@ function sidebarGuide () {
     }
   ]
 }
-function sidebarComponent () {
+function sidebarComponent() {
   return [
     {
       text: '基础组件',

@@ -7,4 +7,3 @@ export type MenuItemProgressInstance = InstanceType<typeof MenuItemProgress>
 export type SubMenuInstance = InstanceType<typeof SubMenu>
 export type MenuInstance = InstanceType<typeof Menu>
 export { MenuItemProgress, MenuItem, SubMenu, Menu }
-

@@ -13,10 +13,10 @@
       v-if="prefixIcon"
       class="iconfont menuItem__Prefix"
       :class="prefixIcon"
-    ></div>
+    />
     <div class="wh-item-content">
       <TextMarquee
-        :fullScroll="false"
+        :full-scroll="false"
         :delay="-1000"
         :i18n-text="node.cssName"
         :text="node.cssName ? '' : node.text"
@@ -28,16 +28,16 @@
     <div
       v-if="hasExpandIcon"
       class="iconfont menuItem__postfix icon-Keypad_right"
-    ></div>
+    />
     <div
       v-else-if="hasCheckIcon"
       class="iconfont menuItem__postfix icon-Selection"
-    ></div>
+    />
   </div>
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import MenuItemNode from './menu-item-node'
+import type MenuItemNode from './menu-item-node'
 import TextMarquee from '@littlekie/components/textMarquee/index.vue'
 const ICON_TYPE_CLASSNAME: Record<number, string> = {
   0: 'icon-epg-DVB',
@@ -67,5 +67,5 @@ defineExpose({
 })
 </script>
 <style lang="scss" scoped>
-  @import '../style/index.scss';
+@import '../style/index.scss';
 </style>

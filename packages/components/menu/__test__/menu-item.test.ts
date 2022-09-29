@@ -1,8 +1,9 @@
 import { describe, expect, test } from 'vitest'
-import { mount, VueWrapper } from '@vue/test-utils'
+import type { VueWrapper } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import MenuItemNode, { NodeType } from '../src/menu-item-node'
 import MenuItem from '../src/menu-item.vue'
-import { MenuItemInstance } from '..'
+import type { MenuItemInstance } from '..'
 const menuItemData = {
   data: [
     {
@@ -48,7 +49,7 @@ describe('Menu-item', () => {
 
   // The component to test
   test('test create menu-item', async () => {
-    let menuItemNode = new MenuItemNode(menuItemData)
+    const menuItemNode = new MenuItemNode(menuItemData)
     expect(menuItemNode.isLeaf).toBe(false)
     const wrapper = _mountMenuItem(menuItemNode)
     const whMenuItm = (await wrapper.findComponent(
@@ -59,7 +60,7 @@ describe('Menu-item', () => {
   })
 
   test('test  MenuItem has slectedIcon ', async () => {
-    let menuItemNode = new MenuItemNode(menuItemData.data[0])
+    const menuItemNode = new MenuItemNode(menuItemData.data[0])
     const wrapper = _mountMenuItem(menuItemNode)
     const whMenuItm = (await wrapper.findComponent(
       '.wh-menu-item'

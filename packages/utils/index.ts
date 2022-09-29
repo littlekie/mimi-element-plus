@@ -1,2 +1,2 @@
-export * from './util';
-export * from './bem';
+export * from './util'
+export * from './bem'

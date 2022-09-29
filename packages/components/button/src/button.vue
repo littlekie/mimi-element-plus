@@ -5,7 +5,7 @@
 </template>
 <script lang="ts" setup>
 defineProps({
-  active: Boolean,
+  active: Boolean
 })
 </script>
 <style lang="scss" scoped>
@@ -21,5 +21,4 @@ button {
     margin-left: 20px;
   }
 }
-
 </style>

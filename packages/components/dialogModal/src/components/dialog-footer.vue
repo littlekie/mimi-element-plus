@@ -17,7 +17,7 @@
 <script lang="ts" setup>
 import { showButton } from '@littlekie/components'
 import { useExtraDialog } from '../hooks'
-import { DialogExtraProps, DialogExtraEmits } from '../types/dialog-extra-type'
+import { DialogExtraEmits, DialogExtraProps } from '../types/dialog-extra-type'
 const props = defineProps(DialogExtraProps)
 defineEmits(DialogExtraEmits)
 const {

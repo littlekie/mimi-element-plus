@@ -1,7 +1,8 @@
-import {  describe, expect, test, vi } from 'vitest'
+import { describe, expect, test, vi } from 'vitest'
 import MenuItemNode from '../src/menu-item-node'
-import { mount, VueWrapper } from '@vue/test-utils'
-import {MenuItemProgress, MenuItemProgressInstance, SubMenu, SubMenuInstance } from '..'
+import { mount } from '@vue/test-utils'
+import type { MenuItemProgressInstance, SubMenuInstance } from '..'
+import { MenuItemProgress, SubMenu } from '..'
 import { nextTick, ref } from 'vue'
 const menuItemData = {
   data: [
@@ -41,7 +42,7 @@ export const subMenuDataContainDisabled = [
     selected: 0,
     type: -1,
     disabled: 0
-  },
+  }
 ]
 const _mountSubMenu = (subMenuData: MenuItemNode[]) =>
   mount(SubMenu, {
@@ -89,42 +90,44 @@ describe('sub-menu', () => {
   })
 
   test('test click or enter menu-item had selectedIcon', async () => {
-    const subMenuData= [{
-      data: [], 
-      iconType: 0, 
-      index: 0, 
-      mlang_key: 'OPTION_SUBTITLES_OFF', 
-      selected: 0, 
-      type: 0, 
-      disabled: 0
-    },
-    {
-      data: [], 
-      iconType: 0, 
-      index: 1, 
-      mlang_key: 'OPTION_SUBTITLES_ON', 
-      selected: 1, 
-      type: 0, 
-      disabled: 0
-    },{
-      data: [], 
-      iconType: 0, 
-      index: 2, 
-      mlang_key: 'OPTION_SUBTITLES_ON', 
-      selected: 0, 
-      type: 0, 
-      disabled: 1
-    },  {
-      data: [], 
-      iconType: 0, 
-      index: 3, 
-      mlang_key: 'OPTION_SUBTITLES_ON', 
-      selected: 0, 
-      type: 0, 
-      disabled: 0
-    }].map(
-      item => new MenuItemNode(item)
-    )
+    const subMenuData = [
+      {
+        data: [],
+        iconType: 0,
+        index: 0,
+        mlang_key: 'OPTION_SUBTITLES_OFF',
+        selected: 0,
+        type: 0,
+        disabled: 0
+      },
+      {
+        data: [],
+        iconType: 0,
+        index: 1,
+        mlang_key: 'OPTION_SUBTITLES_ON',
+        selected: 1,
+        type: 0,
+        disabled: 0
+      },
+      {
+        data: [],
+        iconType: 0,
+        index: 2,
+        mlang_key: 'OPTION_SUBTITLES_ON',
+        selected: 0,
+        type: 0,
+        disabled: 1
+      },
+      {
+        data: [],
+        iconType: 0,
+        index: 3,
+        mlang_key: 'OPTION_SUBTITLES_ON',
+        selected: 0,
+        type: 0,
+        disabled: 0
+      }
+    ].map(item => new MenuItemNode(item))
     const wrapper = _mountSubMenu(subMenuData)
     const vm = wrapper.vm as SubMenuInstance
     const itemList = await wrapper.findAllComponents('.wh-menu-item')
@@ -155,7 +158,7 @@ describe('sub-menu', () => {
     expect(itemList[1].find('.icon-Selection').exists()).toBe(true)
     expect(itemList[3].find('.icon-Selection').exists()).toBe(false)
     wrapper.unmount()
-  });
+  })
 
   test('test sub-menu move up down', async () => {
     const subMenuData = subMenuDataContainDisabled.map(
@@ -165,7 +168,7 @@ describe('sub-menu', () => {
     const wrapper = mount(SubMenu, {
       props: {
         id: 0,
-        subMenuData,
+        subMenuData
       }
     })
     await wrapper.setProps({
@@ -187,39 +190,43 @@ describe('sub-menu', () => {
     const subMenuData = subMenuDataContainDisabled.map(
       item => new MenuItemNode(item)
     )
-    let foucsIndex = ref(0)
+    const foucsIndex = ref(0)
     const wrapper = mount({
-      setup(){
-        return () =>(
-        <SubMenu
-          id={0}
-          subMenuData={subMenuData}
-          v-model:currentFocusItemIndex={foucsIndex.value}
-          ref='subMenuRef'
-      ></SubMenu>
-        )}
+      setup() {
+        return () => (
+          <SubMenu
+            id={0}
+            subMenuData={subMenuData}
+            v-model:currentFocusItemIndex={foucsIndex.value}
+            ref="subMenuRef"
+          ></SubMenu>
+        )
+      }
     })
-    const vm = await wrapper.findComponent({ ref: 'subMenuRef' }).vm as SubMenuInstance
+    const vm = (await wrapper.findComponent({ ref: 'subMenuRef' })
+      .vm) as SubMenuInstance
     vm.KEYDOWN('DOWN')
     expect(foucsIndex.value).toBe(2)
     vm.KEYDOWN('DOWN')
     expect(foucsIndex.value).toBe(0)
-  });
+  })
 
   test('test menu-item-progress', async () => {
-    let progressValue = ref(0)
+    const progressValue = ref(0)
     const wrapper = mount({
       setup() {
-        return () =>(
-              <MenuItemProgress
-                  v-model={progressValue.value}
-                  max-size={100}
-                  min-size={0}
-                  ref='menuItemProgressRef'
-              ></MenuItemProgress>
-        )}
+        return () => (
+          <MenuItemProgress
+            v-model={progressValue.value}
+            max-size={100}
+            min-size={0}
+            ref="menuItemProgressRef"
+          ></MenuItemProgress>
+        )
+      }
     })
-    const vm = await wrapper.findComponent({ref: 'menuItemProgressRef'}).vm as MenuItemProgressInstance
+    const vm = (await wrapper.findComponent({ ref: 'menuItemProgressRef' })
+      .vm) as MenuItemProgressInstance
     vm.RIGHT()
     expect(progressValue.value).toBe(1)
     progressValue.value += 1
@@ -230,121 +237,119 @@ describe('sub-menu', () => {
     await nextTick()
     expect(wrapper.text()).toBe('3')
     wrapper.unmount()
-  });
+  })
 
   test('test menu-item-progress in sub-menu', async () => {
-    const subMenuData = [{
-      data: [],
-      iconType: -1,
-      index: 3,
-      mlang_key: 'OPTION_UAM_DIALOG_ENHANCE_LEVEL',
-      selected: 0,
-      type: 2,
-      disabled: 0
-    }].map(
-      item => new MenuItemNode(item)
-    )
-    let foucsIndex = ref(10)
+    const subMenuData = [
+      {
+        data: [],
+        iconType: -1,
+        index: 3,
+        mlang_key: 'OPTION_UAM_DIALOG_ENHANCE_LEVEL',
+        selected: 0,
+        type: 2,
+        disabled: 0
+      }
+    ].map(item => new MenuItemNode(item))
+    const foucsIndex = ref(10)
     const wrapper = mount({
-      setup(){
-        return () =>(
-        <SubMenu
-          id={0}
-          subMenuData={subMenuData}
-          v-model:currentFocusItemIndex={foucsIndex.value}
-          ref='subMenuRef'
-      ></SubMenu>
-        )}
+      setup() {
+        return () => (
+          <SubMenu
+            id={0}
+            subMenuData={subMenuData}
+            v-model:currentFocusItemIndex={foucsIndex.value}
+            ref="subMenuRef"
+          ></SubMenu>
+        )
+      }
     })
-    const vm = await wrapper.findComponent({ ref: 'subMenuRef' }).vm as SubMenuInstance
+    const vm = (await wrapper.findComponent({ ref: 'subMenuRef' })
+      .vm) as SubMenuInstance
     vm.KEYDOWN('LEFT')
     expect(subMenuData[0].progressValue).toBe(0)
     vm.KEYDOWN('RIGHT')
     expect(subMenuData[0].progressValue).toBe(1)
-  });
+  })
 
-  test('test on change progress', async() => {
-    const subMenuData = [{
-      data: [],
-      iconType: -1,
-      index: 3,
-      mlang_key: 'OPTION_UAM_DIALOG_ENHANCE_LEVEL',
-      selected: 0,
-      type: 2,
-      disabled: 0
-    }].map(
-      item => new MenuItemNode(item)
-    )
-    let foucsIndex = ref(10)
+  test('test on change progress', async () => {
+    const subMenuData = [
+      {
+        data: [],
+        iconType: -1,
+        index: 3,
+        mlang_key: 'OPTION_UAM_DIALOG_ENHANCE_LEVEL',
+        selected: 0,
+        type: 2,
+        disabled: 0
+      }
+    ].map(item => new MenuItemNode(item))
+    const foucsIndex = ref(10)
     const volumeBarAdjustCounts = vi.fn()
 
     const wrapper = mount({
       setup() {
-        return () =>(
-        <SubMenu
-          id={0}
-          subMenuData={subMenuData}
-          onVolumeBarAdjust={volumeBarAdjustCounts}
-          v-model:currentFocusItemIndex={foucsIndex.value}
-          ref='subMenuRef'
-      ></SubMenu>
-        )}
+        return () => (
+          <SubMenu
+            id={0}
+            subMenuData={subMenuData}
+            onVolumeBarAdjust={volumeBarAdjustCounts}
+            v-model:currentFocusItemIndex={foucsIndex.value}
+            ref="subMenuRef"
+          ></SubMenu>
+        )
+      }
     })
     const subMenuWraper = await wrapper.findComponent({ ref: 'subMenuRef' })
     const vm = subMenuWraper.vm as SubMenuInstance
     vm.KEYDOWN('RIGHT')
     await nextTick()
-     const receiveItem =  subMenuWraper.emitted().volumeBarAdjust[0] as [MenuItemNode]
+    const receiveItem = subMenuWraper.emitted().volumeBarAdjust[0] as [
+      MenuItemNode
+    ]
     expect(receiveItem[0].progressValue).toEqual(1)
     expect(volumeBarAdjustCounts).toHaveBeenCalledTimes(1)
     vm.$emit('volumeBarAdjust', subMenuData[0])
     expect(volumeBarAdjustCounts).toHaveBeenCalledTimes(2)
     // TODO 怎么记录组件多次触发emit 事件，为什么目前只能拦截一次？
     // 通过 vm.$emit 手动触发可以拦截多次
-  });
+  })
 
   test('test submenu cssHeaderTitle', async () => {
     const subMenuData = subMenuDataContainDisabled.map(
       item => new MenuItemNode(item)
     )
     const wrapper = mount({
-      setup(){
-        return () =>(
-        <SubMenu
-          id={0}
-          subMenuData={subMenuData}
-          ref='subMenuRef'
-        />
-        )}
+      setup() {
+        return () => (
+          <SubMenu id={0} subMenuData={subMenuData} ref="subMenuRef" />
+        )
+      }
     })
-    const vm = await wrapper.findComponent({ ref: 'subMenuRef' }).vm as SubMenuInstance
+    const vm = (await wrapper.findComponent({ ref: 'subMenuRef' })
+      .vm) as SubMenuInstance
     expect(vm.cssHeaderTitle).toBe(undefined)
     expect(wrapper.find('.wh-sc-header-title').exists()).toBe(false)
     await wrapper.setProps({
-      cssHeaderTitle:'Subtitles'
+      cssHeaderTitle: 'Subtitles'
     })
     expect(wrapper.find('.wh-sc-header-title').isVisible()).toBe(true)
-  });
+  })
 
   test('test slot headerTitle', async () => {
     const subMenuData = subMenuDataContainDisabled.map(
       item => new MenuItemNode(item)
     )
-    const wrapper = mount((SubMenu),{
+    const wrapper = mount(SubMenu, {
       slots: {
         header: () => <span>Subtitles</span>
       },
       props: {
         id: 0,
-        subMenuData,
+        subMenuData
       }
-    }
-    )
+    })
     expect(wrapper.text()).toContain('Subtitles')
     expect(wrapper.html()).toContain('<span>Subtitles</span>')
-  });
-
-  test('tets arrowUp arrowDown', () => {
-    
-  });
+  })
 })

@@ -1,11 +1,10 @@
-
 # mimi-element-plus
 ## Vue 3 + TypeScript + Vite
 
 This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
 ## githooks 钩子没有被触发的原因
-在 .git config 文件中 hooksPath = .husky 这一行删除即可
+在 `.git config` 文件中 hooksPath = .husky 这一行删除即可
 ```bash
 [core]
 	repositoryformatversion = 0

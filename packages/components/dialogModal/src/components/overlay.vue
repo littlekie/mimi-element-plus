@@ -5,14 +5,14 @@
     :style="{ zIndex }"
     @click="customMaskEvent ? () => {} : onModalClick"
   >
-    <slot name="default"></slot>
+    <slot name="default" />
   </div>
   <div
     v-else
     :class="[ns.b(), ns.m('fixed'), overlayClass]"
     :style="{ zIndex }"
   >
-    <slot name="default"></slot>
+    <slot name="default" />
   </div>
 </template>
 <script lang="ts" setup>

@@ -5,11 +5,11 @@ import HelloWorld from './components/HelloWorld.vue'
 import macrosDemo from './components/macros-demo.vue'
 import TsxDemo from './components/demo'
 import { MenuItemProgress } from '@littlekie/components/menu'
-import { ref } from 'vue';
+import { ref } from 'vue'
 const value = ref(0)
 const reference = ref()
 window.reference = reference
-window.setvalue = ()=> value.value+=1
+window.setvalue = () => (value.value += 1)
 </script>
 
 <template>
@@ -22,9 +22,14 @@ window.setvalue = ()=> value.value+=1
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
-  <macrosDemo :msg='value+""'/>
-  <MenuItemProgress ref="reference" :min-size="0" :max-size="10" v-model="value"></MenuItemProgress>
-  <TsxDemo/>
+  <macrosDemo :msg="value + ''" />
+  <MenuItemProgress
+    ref="reference"
+    v-model="value"
+    :min-size="0"
+    :max-size="10"
+  />
+  <TsxDemo />
 </template>
 
 <style>

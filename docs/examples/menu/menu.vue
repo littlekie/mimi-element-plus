@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
-import { Menu, MenuInstance } from '@littlekie/components/menu'
+import { onMounted, onUnmounted, ref } from 'vue'
+import type { MenuInstance } from '@littlekie/components/menu'
+import { Menu } from '@littlekie/components/menu'
 import { mebuData } from '@littlekie/components/menu/__test__/mock'
 import '@littlekie/components/menu/style/index.scss'
-import MenuItemNode from '@littlekie/components/menu/src/menu-item-node'
+import type MenuItemNode from '@littlekie/components/menu/src/menu-item-node'
 const reference = ref<MenuInstance>()
 const actions: any = {
   ArrowDown: 'DOWN',
@@ -29,30 +30,28 @@ onUnmounted(() => {
 })
 const isShow = ref(false)
 const focusItem = ref<MenuItemNode>()
-function changeFocusItem (item: MenuItemNode) {
+function changeFocusItem(item: MenuItemNode) {
   focusItem.value = item
 }
 </script>
 
 <template>
-  <div class="menu_contain" id="menu_contain" ref="meuRef">
+  <div id="menu_contain" ref="meuRef" class="menu_contain">
     <Menu
-      :data="mebuData"
-      @closeMenu="isShow = false"
-      @changeFocusItem="changeFocusItem"
-      ref="reference"
       v-if="isShow"
+      ref="reference"
+      :data="mebuData"
       :visible="isShow"
+      @close-menu="isShow = false"
+      @change-focus-item="changeFocusItem"
     >
       <template #header>
-        <div style="font-size:.3rem;color:red">
-          i am menu title
-        </div>
+        <div style="font-size: 0.3rem; color: red">i am menu title</div>
       </template>
     </Menu>
   </div>
   <div>当前选中的菜单是：{{ focusItem?.cssName }}</div>
-  <button style="background:#A3FE65" @click="isShow = !isShow">
+  <button style="background: #a3fe65" @click="isShow = !isShow">
     toggle menu
   </button>
 </template>

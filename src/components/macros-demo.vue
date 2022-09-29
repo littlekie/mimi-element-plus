@@ -1,34 +1,27 @@
 <template>
   <div>
     <h1>macos demo</h1>
-    <button @click="add">
-		$refCount: {{ $refCount }}
-		</button>
-		$computedCount1: {{ $computedCount1 }}
-		<div>
-			defineProps: {{ newMsg }}
-		</div>
-		<div>
-			defineProps: {{ msg }}
-		</div>
+    <button @click="add">$refCount: {{ $refCount }}</button>
+    $computedCount1: {{ $computedCount1 }}
+    <div>defineProps: {{ newMsg }}</div>
+    <div>defineProps: {{ msg }}</div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { Ref } from 'vue';
-import { $ref,$computed } from 'vue/macros'
-const { msg:newMsg } = defineProps<{
-	msg: string
+import { $computed, $ref } from 'vue/macros'
+const { msg: newMsg } = defineProps<{
+  msg: string
 }>()
 let $refCount = $ref(0)
-function add () {
+function add() {
   $refCount++
 }
-let $computedCount = $computed(() => {
-	return $refCount+1
+const $computedCount = $computed(() => {
+  return $refCount + 1
 })
-let $computedCount1 = $computed(() => {
-	return $computedCount+1
+const $computedCount1 = $computed(() => {
+  return $computedCount + 1
 })
 </script>
 

@@ -1,17 +1,13 @@
 <template>
-  <div class="marqueeDiv" tabindex="-1" ref="wrapper">
+  <div ref="wrapper" class="marqueeDiv" tabindex="-1">
     <div :class="['marquee-warpper', fullScroll ? 'full' : 'normal']">
       <span
         v-if="i18nText"
         class="textContent"
         :data-active="active"
         :class="i18nText"
-      ></span>
-      <span
-        v-else-if="text"
-        class="textContent"
-        :data-active="active"
-      >
+      />
+      <span v-else-if="text" class="textContent" :data-active="active">
         {{ showText }}
       </span>
       <span
@@ -19,21 +15,21 @@
         class="textContent"
         :data-active="active"
         v-html="showHtml"
-      ></span>
+      />
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import type { PropType } from 'vue'
 import {
   computed,
+  defineComponent,
   onMounted,
   onUnmounted,
-  toRefs,
-  PropType,
   onUpdated,
   ref,
-  defineComponent
+  toRefs
 } from 'vue'
 export default defineComponent({
   name: 'TextMarquee',
@@ -77,85 +73,89 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const {
-      text,
-      html,
-      active,
-      delay,
-      speed,
-      fullScroll,
-      loop
-    } = toRefs(props);
-    let showText = computed(() => {
-        return props.isArab ? text.value.split(/\s/).reverse().join(' ') : text.value;
+    const { text, html, active, delay, speed, fullScroll, loop } = toRefs(props)
+    const showText = computed(() => {
+        return props.isArab
+          ? text.value.split(/\s/).reverse().join(' ')
+          : text.value
       }),
       showHtml = computed(() => {
-        return props.isArab ? html.value.split(/\s/).reverse().join(' ') : html.value;
-      });
+        return props.isArab
+          ? html.value.split(/\s/).reverse().join(' ')
+          : html.value
+      })
     onMounted(() => {
-      methods.checkScroll();
+      methods.checkScroll()
     })
     onUnmounted(() => {
-      methods.clear();
+      methods.clear()
     })
     onUpdated(() => {
-      methods.clear();
-      methods.checkScroll();
+      methods.clear()
+      methods.checkScroll()
     })
     const wrapper = ref<HTMLElement>()
     function getTextContentWrapper(): null | HTMLElement {
-      return wrapper.value?.getElementsByClassName('textContent')[0] as HTMLElement;
+      return wrapper.value?.getElementsByClassName(
+        'textContent'
+      )[0] as HTMLElement
     }
     const methods = {
-      clear(el:null | HTMLElement = null) {
+      clear(el: null | HTMLElement = null) {
         let target: HTMLElement | null = el || getTextContentWrapper()
         if (target) {
-          target.style.display = '';
-          target.style.textIndent = '0';
-          target.style.animation = '';
+          target.style.display = ''
+          target.style.textIndent = '0'
+          target.style.animation = ''
           if (!loop.value) {
-            target.removeEventListener('animationend', methods.animationendCallback);
+            target.removeEventListener(
+              'animationend',
+              methods.animationendCallback
+            )
           }
-          target = null;
+          target = null
         }
       },
       checkScroll() {
         let el = getTextContentWrapper()
         if (el) {
           if (active.value) {
-            let warpperEl = wrapper.value!.firstElementChild;
-            const warpperElScrollWidth = warpperEl!.scrollWidth;
-            const warpperElClientWidth = warpperEl!.clientWidth;
+            let warpperEl = wrapper.value!.firstElementChild
+            const warpperElScrollWidth = warpperEl!.scrollWidth
+            const warpperElClientWidth = warpperEl!.clientWidth
             if (warpperElScrollWidth === warpperElClientWidth) {
-              el.style.display = 'inline-block';
+              el.style.display = 'inline-block'
             }
             if (warpperElScrollWidth > warpperElClientWidth) {
-              el.style.display = 'inline-block';
+              el.style.display = 'inline-block'
               const scrollTime =
-              warpperElScrollWidth * 1.05 * 1000 / speed.value;
+                (warpperElScrollWidth * 1.05 * 1000) / speed.value
               el.style.animation = `${props.isArab ? 'ara-' : ''}${
                 fullScroll.value ? 'full-' : ''
               }srcoll ${scrollTime}ms linear ${delay.value}ms ${
                 loop.value ? 'infinite' : ''
-              }`;
+              }`
               if (!loop.value) {
-                el.addEventListener('animationend', methods.animationendCallback);
+                el.addEventListener(
+                  'animationend',
+                  methods.animationendCallback
+                )
               }
               if (fullScroll.value) {
-                el.style.textIndent = `${warpperElClientWidth}px`;
+                el.style.textIndent = `${warpperElClientWidth}px`
               } else {
-                el = null;
+                el = null
               }
             }
-            warpperEl = null;
+            warpperEl = null
           } else {
-            methods.clear(el);
+            methods.clear(el)
           }
         }
-        el = null;
+        el = null
       },
-      animationendCallback(evt:any, el?: any) {
-        methods.clear(el || evt.target);
+      animationendCallback(evt: any, el?: any) {
+        methods.clear(el || evt.target)
       }
     }
     return {
@@ -164,11 +164,11 @@ export default defineComponent({
       wrapper
     }
   }
-});
+})
 </script>
 
 <style lang="scss" scoped>
-.marqueeDiv{
+.marqueeDiv {
   max-width: 100%;
 }
 .marquee-warpper {

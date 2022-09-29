@@ -1,17 +1,27 @@
 <template>
-  <div @click="dialogModalShow = true" class="resetButton">
+  <div class="resetButton" @click="dialogModalShow = true">
     show dialog modal
   </div>
-  <dialog-modal v-model="dialogModalShow" ref="dialogModalRef" title="Tips" width="50%" :before-close="handleClose"
-    @cancel="handleModalCancel" @confirm="handleModalConfirm" :has-cancel="true" :has-confirm="true"
-    :cancel-text="'Cancel'" :confirm-text="'Ok'">
+  <dialog-modal
+    ref="dialogModalRef"
+    v-model="dialogModalShow"
+    title="Tips"
+    width="50%"
+    :before-close="handleClose"
+    :has-cancel="true"
+    :has-confirm="true"
+    :cancel-text="'Cancel'"
+    :confirm-text="'Ok'"
+    @cancel="handleModalCancel"
+    @confirm="handleModalConfirm"
+  >
     <template #header>header tip text</template>
     <span>This is a message</span>
   </dialog-modal>
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue'
 import { dialogModal } from '@littlekie/components/dialogModal'
 const dialogModalShow = ref(false)
 const dialogModalRef = ref()
@@ -55,6 +65,6 @@ const handleKeydown = (e: Event) => {
   background: green;
   color: aqua;
   border: 1px solid aqua;
-  z-index: 1
+  z-index: 1;
 }
 </style>

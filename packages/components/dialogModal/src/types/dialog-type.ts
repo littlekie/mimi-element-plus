@@ -1,5 +1,5 @@
 import { dialogContentProps } from './dialog-content-type'
-import { ExtractPropTypes } from 'vue'
+import type { ExtractPropTypes } from 'vue'
 import { definePropType } from '../tokens'
 import { DialogExtraEmits, DialogExtraProps } from './dialog-extra-type'
 

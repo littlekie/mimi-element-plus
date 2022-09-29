@@ -58,7 +58,7 @@ export default class MenuItemNode implements IMenuItemNode {
   chLockState = false
   nodeType = NodeType.IS_DEFAULT
   children: MenuItemNode[] = []
-  constructor (nodeData: IMenuItemData, parentNode?: MenuItemNode | null) {
+  constructor(nodeData: IMenuItemData, parentNode?: MenuItemNode | null) {
     this.nodeData = nodeData
     this.parent = parentNode || null
     this.level = !this.parent ? 1 : this.parent.level + 1
@@ -67,10 +67,9 @@ export default class MenuItemNode implements IMenuItemNode {
     this.initChildren()
   }
 
-  initState () {
+  initState() {
     const {
       index,
-      label,
       name,
       selected,
       iconType,
@@ -96,7 +95,7 @@ export default class MenuItemNode implements IMenuItemNode {
     }
   }
 
-  initChildren () {
+  initChildren() {
     const childrenData: IMenuItemData[] = this.nodeData.data || []
     this.hasChildren = Array.isArray(childrenData) && childrenData.length > 0
     this.children = childrenData.map((child, index) => {
@@ -105,25 +104,23 @@ export default class MenuItemNode implements IMenuItemNode {
     })
   }
 
-  get isDisabled (): boolean {
+  get isDisabled(): boolean {
     const { nodeData, parent } = this
-    return (
-      Boolean(nodeData.disabled) || Boolean(parent && parent.isDisabled)
-    )
+    return Boolean(nodeData.disabled) || Boolean(parent && parent.isDisabled)
   }
 
-  get isLeaf () {
+  get isLeaf() {
     return !this.hasChildren
   }
-  get nameExtra () {
+  get nameExtra() {
     return this.nodeData.nameExtra || ''
   }
 
-  get text () {
+  get text() {
     return this.name
   }
 
-  getNodeType () {
+  getNodeType() {
     return this.nodeType
   }
 }

@@ -31,21 +31,21 @@ export const useNamespace = (block: string) => {
   const m = (modifier?: string) =>
     modifier ? _bem(unref(namespace), block, '', '', modifier) : ''
   const be = (blockSuffix?: string, element?: string) =>
-    blockSuffix && element ?
-      _bem(unref(namespace), block, blockSuffix, element, '') :
-      ''
+    blockSuffix && element
+      ? _bem(unref(namespace), block, blockSuffix, element, '')
+      : ''
   const em = (element?: string, modifier?: string) =>
-    element && modifier ?
-      _bem(unref(namespace), block, '', element, modifier) :
-      ''
+    element && modifier
+      ? _bem(unref(namespace), block, '', element, modifier)
+      : ''
   const bm = (blockSuffix?: string, modifier?: string) =>
-    blockSuffix && modifier ?
-      _bem(unref(namespace), block, blockSuffix, '', modifier) :
-      ''
+    blockSuffix && modifier
+      ? _bem(unref(namespace), block, blockSuffix, '', modifier)
+      : ''
   const bem = (blockSuffix?: string, element?: string, modifier?: string) =>
-    blockSuffix && element && modifier ?
-      _bem(unref(namespace), block, blockSuffix, element, modifier) :
-      ''
+    blockSuffix && element && modifier
+      ? _bem(unref(namespace), block, blockSuffix, element, modifier)
+      : ''
   const is: {
     (name: string, state: boolean | undefined): string
     (name: string): string
@@ -90,7 +90,7 @@ export const useNamespace = (block: string) => {
     cssVar,
     cssVarName,
     cssVarBlock,
-    cssVarBlockName,
+    cssVarBlockName
   }
 }
 

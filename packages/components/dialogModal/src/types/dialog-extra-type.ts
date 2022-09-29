@@ -1,10 +1,10 @@
-import { ComponentPublicInstance, ExtractPropTypes, PropType } from 'vue'
+import type { ExtractPropTypes, PropType } from 'vue'
 import { BUTTON_TYPE } from '../hooks/useDialog'
 
 export const DialogExtraEmits = {
   close: () => true,
   cancel: () => true,
-  confirm: () => true,
+  confirm: () => true
 }
 export const DialogExtraProps = {
   hasCancel: {

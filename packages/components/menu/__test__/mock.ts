@@ -1,4 +1,4 @@
-export const mebuData= [
+export const mebuData = [
   {
     data: [],
     iconType: -1,
