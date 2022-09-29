@@ -12,7 +12,9 @@
     "preview": "vite preview",
     "docs:dev": "pnpm run -C docs dev",
     "docs:build": "pnpm run -C docs build",
-    "docs:serve": "pnpm run -C docs serve"
+    "docs:serve": "pnpm run -C docs serve",
+    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.json",
+    "lint:fix": "eslint --fix . --ext .vue,.js,.ts,.jsx,.tsx,.json"
   },
   "gitHooks": {
     "commit-msg": "node scripts/verifyCommit.js"
@@ -24,15 +26,22 @@
     "vue": "^3.2.37"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
     "@vitejs/plugin-vue": "^3.0.0",
     "@vitejs/plugin-vue-jsx": "^2.0.0",
     "@vitest/ui": "^0.22.1",
     "@vue/test-utils": "^2.0.2",
     "c8": "^7.12.0",
     "chalk": "^4.1.0",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-define-config": "^1.7.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^9.5.1",
     "jsdom": "^20.0.0",
     "lint-staged": "^13.0.3",
-    "prettier": "2.2.1",
+    "prettier": "^2.7.1",
     "sass": "^1.54.4",
     "typescript": "^4.6.4",
     "vite": "^3.0.0",
