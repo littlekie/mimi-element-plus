@@ -1,5 +1,5 @@
 import type { Ref } from 'vue'
-import { ref } from 'vue'
+import { computed, ref, unref } from 'vue'
 import type MenuItemNode from './menu-item-node'
 
 interface IUseSubMenArrow {
@@ -8,80 +8,48 @@ interface IUseSubMenArrow {
   id: number
 }
 export function useSubMenArrow(config: IUseSubMenArrow) {
-  const { subMenuData, menuItemActiveIndex, id } = config
+  const { subMenuData, menuItemActiveIndex } = config
   const maxMenuItemCount = 8
-  const upArrowShow = ref(false)
-  const downArrowShow = ref(false)
-  function showDownIcon() {
-    downArrowShow.value = true
-  }
-  function hideDownIcon() {
-    downArrowShow.value = false
-  }
-  function showUpIcon() {
-    upArrowShow.value = true
-  }
-  function hideUpIcon() {
-    upArrowShow.value = false
-  }
+  const offsetAxisY = ref(0)
+  const upArrowShow = computed(() => {
+    return subMenuData.value.length > 8 && offsetAxisY.value > 0
+  })
+  const downArrowShow = computed(() => {
+    return (
+      subMenuData.value.length > 8 &&
+      offsetAxisY.value < subMenuData.value.length - 8
+    )
+  })
   function handlerUpArrow() {
-    const currentIndex = menuItemActiveIndex.value
+    const currentIndex = unref(menuItemActiveIndex)
     const nodesCount = subMenuData.value.length
-    const menuContentListTop = getCurrentMenuContentListTop()
-    if (currentIndex === 0) {
-      hideUpIcon()
+    if (nodesCount <= 8) {
+      return
     }
     if (
       nodesCount - currentIndex >= maxMenuItemCount &&
-      menuContentListTop < 0
+      offsetAxisY.value > 0
     ) {
-      setCurrentMenuContentList(menuContentListTop + 105)
-      showDownIcon()
-    } else if (currentIndex >= maxMenuItemCount && menuContentListTop === 0) {
-      setCurrentMenuContentList(-105 * (currentIndex - 7))
-      hideDownIcon()
-      showUpIcon()
-    } else if (currentIndex < maxMenuItemCount && menuContentListTop === 0) {
-      showUpIcon()
-    } else {
-      hideDownIcon()
+      --offsetAxisY.value
+    } else if (currentIndex >= maxMenuItemCount && offsetAxisY.value === 0) {
+      offsetAxisY.value = currentIndex - 7
     }
   }
 
-  async function handlerDownArrow() {
+  function handlerDownArrow() {
     const nodesCount = subMenuData.value.length
-    const scrollHigh = (nodesCount - maxMenuItemCount) * 105 * -1
+    if (nodesCount <= 8) {
+      return
+    }
+    const scrollHigh = nodesCount - maxMenuItemCount
     const currentItemIndex = menuItemActiveIndex.value
-
     if (currentItemIndex >= maxMenuItemCount - 1) {
-      if (getCurrentMenuContentListTop() <= scrollHigh) {
+      if (offsetAxisY.value >= scrollHigh) {
         return
       }
-      setCurrentMenuContentList(getCurrentMenuContentListTop() - 105)
-      showUpIcon()
+      ++offsetAxisY.value
     } else if (currentItemIndex === 0) {
-      setCurrentMenuContentList(0)
-      hideUpIcon()
-    }
-    if (nodesCount - currentItemIndex > 2) {
-      showDownIcon()
-    } else {
-      hideDownIcon()
-    }
-  }
-  function getCurrentMenuContentListTop() {
-    const currentMenuContentList = document.querySelectorAll(
-      '.wh-sidebar .wh-sc-content-list'
-    )[id] as HTMLElement
-    const listTop = currentMenuContentList?.style?.top || '0px'
-    return Math.ceil(Number(listTop.replace('px', '')))
-  }
-  function setCurrentMenuContentList(top: number) {
-    const currentMenuContentList = document.querySelectorAll(
-      '.wh-sidebar .wh-sc-content-list'
-    )[id] as HTMLElement
-    if (currentMenuContentList?.style) {
-      currentMenuContentList.style.top = `${top}px`
+      offsetAxisY.value = 0
     }
   }
 
@@ -90,9 +58,6 @@ export function useSubMenArrow(config: IUseSubMenArrow) {
     upArrowShow,
     handlerDownArrow,
     handlerUpArrow,
-    showDownIcon,
-    hideDownIcon,
-    showUpIcon,
-    hideUpIcon
+    offsetAxisY
   }
 }

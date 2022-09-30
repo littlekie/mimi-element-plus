@@ -16,7 +16,10 @@
       <span class="arrow" :class="{ 'icon-switch_down2': upArrowShow }" />
     </div>
     <div class="wh-sc-content">
-      <div class="wh-sc-content-list">
+      <div
+        class="wh-sc-content-list"
+        :style="{ transform: `translateY(-${offsetAxisY * 0.7}rem` }"
+      >
         <template v-for="(item, index) in subMenuData">
           <MenuItemProgress
             v-if="item.nodeType === NodeType.IS_BAR"
@@ -76,7 +79,7 @@ const { subMenuData } = toRefs(props)
 const {
   downArrowShow,
   upArrowShow,
-  showDownIcon,
+  offsetAxisY,
   handlerDownArrow,
   handlerUpArrow
 } = useSubMenArrow({
@@ -84,9 +87,6 @@ const {
   menuItemActiveIndex,
   subMenuData
 })
-if (subMenuData.value.length > 8) {
-  showDownIcon()
-}
 const activeMenu = computed(() => props.currentFocusMenuIndex === props.id)
 if (activeMenu.value) {
   setCurrentFocusItemIndex(props.currentFocusItemIndex)

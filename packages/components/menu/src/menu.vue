@@ -1,5 +1,5 @@
 <template>
-  <div v-show="visible" class="option-wrapper menu" role="menu">
+  <div v-show="visible" class="menu-wrapper" role="menu">
     <SubMenu
       v-for="(menu, index) in menuList"
       :id="index"
@@ -138,6 +138,6 @@ defineExpose({
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '../style/index.scss';
 </style>
