@@ -1,0 +1,897 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?p2oin5');
+  src:  url('fonts/icomoon.eot?p2oin5#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?p2oin5') format('truetype'),
+    url('fonts/icomoon.woff?p2oin5') format('woff'),
+    url('fonts/icomoon.svg?p2oin5#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-source_VGA:before {
+  content: "\e9fe";
+}
+.icon-source_SD:before {
+  content: "\e9ff";
+}
+.icon-Projector-reboot:before {
+  content: "\e9fd";
+}
+.icon-Omit:before {
+  content: "\e9fc";
+}
+.icon-Wrong:before {
+  content: "\e9fb";
+}
+.icon-LENS:before {
+  content: "\e9fa";
+}
+.icon-Monitor_Office-365:before {
+  content: "\e9f5";
+}
+.icon-Monitor_Microsoft-teams:before {
+  content: "\e9f6";
+}
+.icon-Monitor_Zoom:before {
+  content: "\e9f7";
+}
+.icon-source_DisplayPort:before {
+  content: "\e9f8";
+}
+.icon-icon_Monitor:before {
+  content: "\e9f9";
+}
+.icon-Search-People:before {
+  content: "\e9ef";
+}
+.icon-Search-Music:before {
+  content: "\e9f0";
+}
+.icon-Search-Season:before {
+  content: "\e9f1";
+}
+.icon-Search-Video:before {
+  content: "\e9f2";
+}
+.icon-Search-Movie:before {
+  content: "\e9f3";
+}
+.icon-Search-APP:before {
+  content: "\e9f4";
+}
+.icon-Esticker-settings:before {
+  content: "\e9eb";
+}
+.icon-Esticker-video:before {
+  content: "\e9ec";
+}
+.icon-Esticker-sound:before {
+  content: "\e9ed";
+}
+.icon-Esticker-picture:before {
+  content: "\e9ee";
+}
+.icon-Zoom-out:before {
+  content: "\e9e9";
+}
+.icon-Enlarge:before {
+  content: "\e9ea";
+}
+.icon-My_my-favorate:before {
+  content: "\e9e0";
+}
+.icon-my_new-way-to-connect-tv1:before {
+  content: "\e9e1";
+}
+.icon-my_new-way-to-connect-tv2:before {
+  content: "\e9e2";
+}
+.icon-new-way-to-connect-tv_favorite:before {
+  content: "\e9e3";
+}
+.icon-new-way-to-connect-tv_good:before {
+  content: "\e9e4";
+}
+.icon-new-way-to-connect-tv_vioce:before {
+  content: "\e9e5";
+}
+.icon-new-way-to-connect-tv_assistant:before {
+  content: "\e9e6";
+}
+.icon-My_screenshots:before {
+  content: "\e9e7";
+}
+.icon-Recently-viewed--my-favorite_time:before {
+  content: "\e9e8";
+}
+.icon-Network-select:before {
+  content: "\e9dd";
+}
+.icon-Network-More-info:before {
+  content: "\e9de";
+}
+.icon-Network-Locked:before {
+  content: "\e9df";
+}
+.icon-Installed-app:before {
+  content: "\e9db";
+}
+.icon-home_recently-viewed:before {
+  content: "\e9dc";
+}
+.icon-epg-Dolby_d:before {
+  content: "\e945";
+}
+.icon-dolby_2_d:before {
+  content: "\e97a";
+}
+.icon-Emergency-warn:before {
+  content: "\e9da";
+}
+.icon-right-handed:before {
+  content: "\e9d8";
+}
+.icon-left-handed:before {
+  content: "\e9d9";
+}
+.icon-play_Single-cycle:before {
+  content: "\e916";
+}
+.icon-play_cycle:before {
+  content: "\e915";
+}
+.icon-home_TV-sound:before {
+  content: "\e9d7";
+}
+.icon-source_hdmi:before {
+  content: "\e933";
+}
+.icon-watch-tv_antenna-cable:before {
+  content: "\e90a";
+}
+.icon-Motion-Style:before {
+  content: "\e9d5";
+}
+.icon-Accessibility:before {
+  content: "\e9d6";
+}
+.icon-Alexa:before {
+  content: "\e9d4";
+}
+.icon-home_bluetooth-no-sound:before {
+  content: "\e9d1";
+}
+.icon-home_bluetooth-sound:before {
+  content: "\e9d2";
+}
+.icon-PVR-disk:before {
+  content: "\e9d3";
+}
+.icon-AI-Picture-mode:before {
+  content: "\e9d0";
+}
+.icon-TCL-antenna_alternative:before {
+  content: "\e9cf";
+}
+.icon-GF-Antenna:before {
+  content: "\e9a3";
+}
+.icon-Audio-Delay:before {
+  content: "\e9cd";
+}
+.icon-SPDIF-Delay:before {
+  content: "\e9ce";
+}
+.icon-home_TV-no-sound:before {
+  content: "\e9cb";
+}
+.icon-home_TV-no-erji:before {
+  content: "\e9cc";
+}
+.icon-home_TV-erji:before {
+  content: "\e9ca";
+}
+.icon-source_bluetooth-audio:before {
+  content: "\e9c9";
+}
+.icon-PVR-play:before {
+  content: "\e9c8";
+}
+.icon-PVR-stop-recording:before {
+  content: "\e9c6";
+}
+.icon-PVR-suspend:before {
+  content: "\e9c7";
+}
+.icon-Keypad_left:before {
+  content: "\e9bb";
+}
+.icon-Keypad_right:before {
+  content: "\e9c1";
+}
+.icon-Keypad_up:before {
+  content: "\e9c2";
+}
+.icon-Keypad_volume-down:before {
+  content: "\e9c3";
+}
+.icon-Keypad_volume-up:before {
+  content: "\e9c4";
+}
+.icon-Keypad_down:before {
+  content: "\e9c5";
+}
+.icon-Timeshift:before {
+  content: "\e9ba";
+}
+.icon-Keypad_back:before {
+  content: "\e9bc";
+}
+.icon-Keypad_home:before {
+  content: "\e9bd";
+}
+.icon-Keypad_power-off:before {
+  content: "\e9be";
+}
+.icon-Keypad_settings:before {
+  content: "\e9bf";
+}
+.icon-Keypad_sources:before {
+  content: "\e9c0";
+}
+.icon-Focal-triangle1:before {
+  content: "\e9b8";
+}
+.icon-Focal-triangle2:before {
+  content: "\e9b9";
+}
+.icon-Viewed:before {
+  content: "\e9b7";
+}
+.icon-PVR:before {
+  content: "\e9b6";
+}
+.icon-Contact-Us:before {
+  content: "\e9b3";
+}
+.icon-User-Manual:before {
+  content: "\e9b4";
+}
+.icon-Sheet-Move:before {
+  content: "\e9b5";
+}
+.icon-FHD-Media-player:before {
+  content: "\e9b1";
+}
+.icon-K-Media-player:before {
+  content: "\e9b2";
+}
+.icon-icon_Smart-Key:before {
+  content: "\e9b0";
+}
+.icon-Fast-Cast:before {
+  content: "\e99b";
+}
+.icon-Auto-Volume-Control:before {
+  content: "\e99c";
+}
+.icon-SPDIF-Style:before {
+  content: "\e99d";
+}
+.icon-Settings:before {
+  content: "\e99e";
+}
+.icon-Noise-Reduction:before {
+  content: "\e99f";
+}
+.icon-Over-Scan:before {
+  content: "\e9a0";
+}
+.icon-Dynamic-Contrast:before {
+  content: "\e9a1";
+}
+.icon-ECO-Setting:before {
+  content: "\e9a2";
+}
+.icon-Picture-Mode:before {
+  content: "\e9a4";
+}
+.icon-Picture-Style:before {
+  content: "\e9a5";
+}
+.icon-Sound-Style:before {
+  content: "\e9a6";
+}
+.icon-Sports-Mode:before {
+  content: "\e9a7";
+}
+.icon-Soundbar-Ready:before {
+  content: "\e9a8";
+}
+.icon-Enjoy-Music:before {
+  content: "\e9a9";
+}
+.icon-Sleep-Time:before {
+  content: "\e9aa";
+}
+.icon-Wireless-Display:before {
+  content: "\e9ab";
+}
+.icon-Partially-watched:before {
+  content: "\e9ac";
+}
+.icon-Watched:before {
+  content: "\e9ad";
+}
+.icon-Unwatched-recording:before {
+  content: "\e9ae";
+}
+.icon-Expired:before {
+  content: "\e9af";
+}
+.icon-Camera:before {
+  content: "\e98f";
+}
+.icon-HTS_hl:before {
+  content: "\e990";
+}
+.icon-Game-Console:before {
+  content: "\e991";
+}
+.icon-UHD-Media-player:before {
+  content: "\e992";
+}
+.icon-Audio-System:before {
+  content: "\e993";
+}
+.icon-Others:before {
+  content: "\e994";
+}
+.icon-VCR:before {
+  content: "\e995";
+}
+.icon-Computer:before {
+  content: "\e996";
+}
+.icon-HD-Digital-Receiver:before {
+  content: "\e997";
+}
+.icon-Satellite_Source:before {
+  content: "\e998";
+}
+.icon-Recorder:before {
+  content: "\e999";
+}
+.icon-DVD-Player:before {
+  content: "\e99a";
+}
+.icon-Keypad_no-sound:before {
+  content: "\e98e";
+}
+.icon-icon_watch-TV:before {
+  content: "\e908";
+}
+.icon-icon_sources:before {
+  content: "\e909";
+}
+.icon-icon_setting:before {
+  content: "\e958";
+}
+.icon-Subtitles_d1:before {
+  content: "\e98d";
+}
+.icon-epg_AAC:before {
+  content: "\e98c";
+}
+.icon-More:before {
+  content: "\e98b";
+}
+.icon-Keypad_sound:before {
+  content: "\e988";
+}
+.icon-Keypad_channel:before {
+  content: "\e989";
+}
+.icon-Keypad_starting-up:before {
+  content: "\e98a";
+}
+.icon-FVP-APPS:before {
+  content: "\e986";
+}
+.icon-Connectivity:before {
+  content: "\e987";
+}
+.icon-epg-Slowly-into:before {
+  content: "\e984";
+}
+.icon-epg-Fast-forward:before {
+  content: "\e985";
+}
+.icon-source_DLNA:before {
+  content: "\e982";
+}
+.icon-source_bluetooth:before {
+  content: "\e983";
+}
+.icon-X:before {
+  content: "\e97d";
+}
+.icon-X1:before {
+  content: "\e97e";
+}
+.icon-X2:before {
+  content: "\e97f";
+}
+.icon-X3:before {
+  content: "\e980";
+}
+.icon-X4:before {
+  content: "\e981";
+}
+.icon-Clock_d:before {
+  content: "\e960";
+}
+.icon-Sleep_Timer-_d:before {
+  content: "\e961";
+}
+.icon-New_d:before {
+  content: "\e962";
+}
+.icon-Blue_ray_Disc_Player_d:before {
+  content: "\e963";
+}
+.icon-Online_TV_d:before {
+  content: "\e964";
+}
+.icon-D_Pad_hl:before {
+  content: "\e965";
+}
+.icon-HTS_Recorder_d:before {
+  content: "\e966";
+}
+.icon-HD_Recorder_d:before {
+  content: "\e967";
+}
+.icon-Demo_Mode_d:before {
+  content: "\e968";
+}
+.icon-UHD_Blue_ray_Disc_Player_d:before {
+  content: "\e969";
+}
+.icon-UHD_Digital_Receiver_d:before {
+  content: "\e96a";
+}
+.icon-Digital_Receiver_d:before {
+  content: "\e96b";
+}
+.icon-closed_caption_d:before {
+  content: "\e96c";
+}
+.icon-epg-Audio_Description_d1:before {
+  content: "\e96d";
+}
+.icon-epg-Subtitles_d1:before {
+  content: "\e96e";
+}
+.icon-epg-Sign_Language_d1:before {
+  content: "\e96f";
+}
+.icon-Phone_Call_d:before {
+  content: "\e970";
+}
+.icon-Recording_Ongoing_n:before {
+  content: "\e971";
+}
+.icon-Failed_Recording:before {
+  content: "\e972";
+}
+.icon-Recommendation_d:before {
+  content: "\e973";
+}
+.icon-Zoom_In_d:before {
+  content: "\e974";
+}
+.icon-Zoom_Out_d:before {
+  content: "\e975";
+}
+.icon-Bluetooth_d:before {
+  content: "\e976";
+}
+.icon-source_smart-TV1:before {
+  content: "\e977";
+}
+.icon-punched_28_Picture_Format_d:before {
+  content: "\e978";
+}
+.icon-punched_37_2D_d:before {
+  content: "\e979";
+}
+.icon-punched_27_Pcture_Shift_d:before {
+  content: "\e97b";
+}
+.icon-punched_38_3D_d:before {
+  content: "\e97c";
+}
+.icon-epg-UHD:before {
+  content: "\e95e";
+}
+.icon-epg-SD:before {
+  content: "\e95f";
+}
+.icon-Visually_Impaired_d:before {
+  content: "\e936";
+}
+.icon-Locked_d:before {
+  content: "\e937";
+}
+.icon-epg-Text_Teletext_d:before {
+  content: "\e94a";
+}
+.icon-epg-Mute_RC_d:before {
+  content: "\e94b";
+}
+.icon-epg-All-Satellite-Channels:before {
+  content: "\e94c";
+}
+.icon-punched:before {
+  content: "\e94d";
+}
+.icon-epg-TXT:before {
+  content: "\e959";
+}
+.icon-epg-DVB:before {
+  content: "\e95a";
+}
+.icon-epg-suspend:before {
+  content: "\e943";
+}
+.icon-epg-Hearing_Impaired_d:before {
+  content: "\e944";
+}
+.icon-epg-HD_hl:before {
+  content: "\e946";
+}
+.icon-epg-Sign_Language_d:before {
+  content: "\e947";
+}
+.icon-epg-Audio_Description_d:before {
+  content: "\e948";
+}
+.icon-epg-Subtitles_d:before {
+  content: "\e949";
+}
+.icon-epg-play:before {
+  content: "\e94e";
+}
+.icon-Multiple-Selection:before {
+  content: "\e93c";
+}
+.icon-Multiple-Selection-Selection:before {
+  content: "\e93d";
+}
+.icon-epg-recording-finished:before {
+  content: "\e94f";
+}
+.icon-epg-Default-Icon:before {
+  content: "\e950";
+}
+.icon-epg-option:before {
+  content: "\e951";
+}
+.icon-epg-info:before {
+  content: "\e952";
+}
+.icon-epg-recording:before {
+  content: "\e953";
+}
+.icon-epg-alarm:before {
+  content: "\e954";
+}
+.icon-epg-wait:before {
+  content: "\e955";
+}
+.icon-epg-right-move-icon:before {
+  content: "\e956";
+}
+.icon-epg-left-move-icon:before {
+  content: "\e957";
+}
+.icon-epg-Collection:before {
+  content: "\e95b";
+}
+.icon-epg-locking:before {
+  content: "\e95c";
+}
+.icon-epg-Scrambled_hl:before {
+  content: "\e95d";
+}
+.icon-Digital-keyboard-back:before {
+  content: "\e901";
+}
+.icon-cables:before {
+  content: "\e902";
+}
+.icon-cables-2:before {
+  content: "\e903";
+}
+.icon-cables-3:before {
+  content: "\e90c";
+}
+.icon-install-channel_icon:before {
+  content: "\e942";
+}
+.icon-universal-access_icon:before {
+  content: "\e93b";
+}
+.icon-child-code_icon:before {
+  content: "\e941";
+}
+.icon-WiFnetwork_icon-2:before {
+  content: "\e900";
+}
+.icon-network_icon-3:before {
+  content: "\e904";
+}
+.icon-icon_help:before {
+  content: "\e90b";
+}
+.icon-voice_icon:before {
+  content: "\e90d";
+}
+.icon-about_tv_icon:before {
+  content: "\e90e";
+}
+.icon-sound_icon:before {
+  content: "\e928";
+}
+.icon-network_icon:before {
+  content: "\e92a";
+}
+.icon-system_icon:before {
+  content: "\e92b";
+}
+.icon-picture_icon:before {
+  content: "\e940";
+}
+.icon-watch-tv_recordings:before {
+  content: "\e90f";
+}
+.icon-watch-tv_channels:before {
+  content: "\e910";
+}
+.icon-watch-tv_TV-guide:before {
+  content: "\e911";
+}
+.icon-watch-tv_satellite:before {
+  content: "\e912";
+}
+.icon-source_smart-TV:before {
+  content: "\e913";
+}
+.icon-source_av:before {
+  content: "\e92f";
+}
+.icon-source_usb:before {
+  content: "\e93e";
+}
+.icon-source_Miracast:before {
+  content: "\e93f";
+}
+.icon-weather_storms:before {
+  content: "\e934";
+}
+.icon-antenna_alternative:before {
+  content: "\e935";
+}
+.icon-antenna_play:before {
+  content: "\e938";
+}
+.icon-switch_down1:before {
+  content: "\e939";
+}
+.icon-switch_down2:before {
+  content: "\e93a";
+}
+.icon-Select-number-delete:before {
+  content: "\e930";
+}
+.icon-Select-number-back:before {
+  content: "\e931";
+}
+.icon-Selection:before {
+  content: "\e932";
+}
+.icon-icon_search:before {
+  content: "\e92c";
+}
+.icon-switch_down:before {
+  content: "\e92d";
+}
+.icon-switch_up:before {
+  content: "\e92e";
+}
+.icon-icon_entrance:before {
+  content: "\e927";
+}
+.icon-source_YPbPr:before {
+  content: "\e914";
+}
+.icon-icon_network:before {
+  content: "\e929";
+}
+.icon-play_random:before {
+  content: "\e917";
+}
+.icon-play_last:before {
+  content: "\e91c";
+}
+.icon-play_next:before {
+  content: "\e918";
+}
+.icon-play_Fast-forward:before {
+  content: "\e919";
+}
+.icon-play_Slowly-into:before {
+  content: "\e91b";
+}
+.icon-play_list:before {
+  content: "\e91a";
+}
+.icon-fm_music_track:before {
+  content: "\e91d";
+}
+.icon-fm_music_Albums:before {
+  content: "\e91e";
+}
+.icon-fm_music_artist:before {
+  content: "\e91f";
+}
+.icon-fm_photo:before {
+  content: "\e920";
+}
+.icon-fm_music:before {
+  content: "\e921";
+}
+.icon-fm_video:before {
+  content: "\e922";
+}
+.icon-fm_folder:before {
+  content: "\e923";
+}
+.icon-USB:before {
+  content: "\e924";
+}
+.icon-play_play:before {
+  content: "\e925";
+}
+.icon-play_stop:before {
+  content: "\e926";
+}
+.icon-voice-2:before {
+  content: "\e906";
+}
+.icon-voice:before {
+  content: "\e907";
+}
+.icon-location:before {
+  content: "\e905";
+}
+.icon-x:before {
+  content: "\78";
+}
+.icon-source_av_no-use:before {
+  content: "\e606";
+}
+.icon-weather_dreary:before {
+  content: "\e611";
+}
+.icon-weather_feng:before {
+  content: "\e612";
+}
+.icon-weather_cloudy:before {
+  content: "\e613";
+}
+.icon-weather_dust:before {
+  content: "\e614";
+}
+.icon-weather_fog:before {
+  content: "\e615";
+}
+.icon-weather_rain:before {
+  content: "\e616";
+}
+.icon-weather_showers:before {
+  content: "\e617";
+}
+.icon-weather_snow:before {
+  content: "\e618";
+}
+.icon-weather_hurricane:before {
+  content: "\e619";
+}
+.icon-weather_rain_snow:before {
+  content: "\e61a";
+}
+.icon-weather_sunny:before {
+  content: "\e61b";
+}
+.icon-weather_tornado:before {
+  content: "\e61c";
+}
+.icon-weather_unknow:before {
+  content: "\e61d";
+}
+.icon-add_icon:before {
+  content: "\e61f";
+}
+.icon-home_top_pre:before {
+  content: "\e620";
+}
+.icon-home_top_def:before {
+  content: "\e621";
+}
+.icon-search_backspace:before {
+  content: "\e622";
+}
+.icon-search_delete_icon:before {
+  content: "\e623";
+}
+.icon-search_history_clear:before {
+  content: "\e624";
+}
+.icon-search_icon:before {
+  content: "\e625";
+}
+.icon-search_switch_left:before {
+  content: "\e626";
+}
+.icon-tv_left_icon:before {
+  content: "\e627";
+}
+.icon-search_switch_right:before {
+  content: "\e628";
+}
+.icon-tv_right_icon:before {
+  content: "\e629";
+}
+.icon-visbitity_icon:before {
+  content: "\e638";
+}
+.icon-uv_icon:before {
+  content: "\e639";
+}
+.icon-Realfeel_icon:before {
+  content: "\e63a";
+}
+.icon-wind_icon:before {
+  content: "\e63b";
+}
+.icon-humidity_icon:before {
+  content: "\e63c";
+}
+.icon-gusts_icon:before {
+  content: "\e63d";
+}
+.icon-address_icon:before {
+  content: "\e63e";
+}
+.icon-search_kongge:before {
+  content: "\e63f";
+}
