@@ -56,13 +56,14 @@ function changeFocusItem(item: MenuItemNode) {
   </button>
 </template>
 
-<style>
+<style lang="scss">
 @import '@littlekie/components/menu/style/index.scss';
 @import '../../../src/assets/eng.css';
+@import '../../../src/assets/icon/default/style.css';
 .menu_contain {
   position: relative;
 }
-.option-wrapper {
+.menu-wrapper {
   position: relative;
 }
 </style>
