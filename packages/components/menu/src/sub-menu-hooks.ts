@@ -52,7 +52,11 @@ export function useSubMenArrow(config: IUseSubMenArrow) {
       offsetAxisY.value = 0
     }
   }
-
+  const initOffsetAxisY = () => {
+    const activeIndex = subMenuData.value.findIndex(item => item.isChecked) + 1
+    offsetAxisY.value = Math.max(0, activeIndex - maxMenuItemCount)
+  }
+  initOffsetAxisY()
   return {
     downArrowShow,
     upArrowShow,
